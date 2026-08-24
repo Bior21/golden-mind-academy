@@ -9,6 +9,7 @@
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
+import images from '../data/images.json';
 
 /** Planned campus facilities, from the approved deck. */
 const facilities = [
@@ -44,8 +45,8 @@ const facilities = [
         </p>
       </div>
       <img
-        src="/images/site.jpg"
-        alt="A completed classroom unit with its green pyramid roof on the Golden Mind Academy site in Ayilo."
+        src={images.programs.academics.src}
+        alt={images.programs.academics.alt}
         loading="lazy"
       />
     </div>

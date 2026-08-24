@@ -22,6 +22,7 @@ import UpdateCard from '../components/UpdateCard.astro';
 import { SITE, LINKS } from '../config/site';
 import { getCollection } from 'astro:content';
 import funding from '../data/funding.json';
+import images from '../data/images.json';
 const fmt = (n: number) => '$' + n.toLocaleString('en-US');
 
 /* Two most recent updates for the teaser strip, newest first. */
@@ -36,8 +37,8 @@ const latestUpdates = allUpdates
   <section class="hero">
     <img
       class="hero-photo"
-      src="/images/hero.jpg"
-      alt="The Golden Mind Academy school site in Ayilo I Refugee Settlement: three roofed classroom buildings rising on the open ground at dusk."
+      src={images.home.hero.src}
+      alt={images.home.hero.alt}
     />
     <div class="hero-copy">
       <div class="container">
@@ -70,8 +71,8 @@ const latestUpdates = allUpdates
         </p>
       </div>
       <img
-        src="/images/construction-latrine.jpg"
-        alt="Children standing beside the newly completed latrine block at the Golden Mind Academy construction site in Ayilo."
+        src={images.home.vision.src}
+        alt={images.home.vision.alt}
         loading="lazy"
       />
     </div>
@@ -92,8 +93,8 @@ const latestUpdates = allUpdates
     <!-- RIGHT: image column -->
     <div class="mission-img-col">
       <img
-        src="/images/site.jpg"
-        alt="A completed classroom unit with its green pyramid roof on the Golden Mind Academy site in Ayilo."
+        src={images.home.mission.src}
+        alt={images.home.mission.alt}
         loading="lazy"
       />
     </div>

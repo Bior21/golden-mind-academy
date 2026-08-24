@@ -18,6 +18,7 @@
  *   (opening/closing the mobile menu).
  */
 import { SITE, NAV, LINKS } from '../config/site';
+import images from '../data/images.json';
 
 /* Astro serves pages with a trailing slash (/about/), but the NAV hrefs
    also have trailing slashes, so the simple equality check works in most cases.
@@ -29,7 +30,7 @@ const isCurrent = (href: string) => currentPath === href || currentPath === href
 <header class="header">
   <div class="container bar">
     <a class="brand" href="/">
-      <img class="mark" src="/images/logo.jpg" alt="Golden Mind Academy crest" />
+      <img class="mark" src={images.header.logo.src} alt={images.header.logo.alt} />
       <span class="brand-text">
         <span class="brand-name">{SITE.name}</span>
         <span class="brand-tag">{SITE.tagline}</span>

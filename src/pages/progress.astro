@@ -18,6 +18,7 @@ import FundingTracker from '../components/FundingTracker.astro';
 import UpdateCard from '../components/UpdateCard.astro';
 import { LINKS } from '../config/site';
 import { getCollection } from 'astro:content';
+import images from '../data/images.json';
 
 /* All updates, newest first. */
 const updates = (await getCollection('updates')).sort(
@@ -41,21 +42,21 @@ const updates = (await getCollection('updates')).sort(
       </p>
       <div class="gallery">
         <ArchImage
-          src="/images/construction-frame.jpg"
-          alt="The timber roof truss structure rising across the full length of the classroom block before roofing sheets were installed."
-          caption="Timber frame rising across the classroom block."
+          src={images.progress.gallery1.src}
+          alt={images.progress.gallery1.alt}
+          caption={images.progress.gallery1.caption}
           arch={false}
         />
         <ArchImage
-          src="/images/frame.jpg"
-          alt="The long classroom block with green roofing sheets installed, seen from the school grounds."
-          caption="Green roofing installed over the main building."
+          src={images.progress.gallery2.src}
+          alt={images.progress.gallery2.alt}
+          caption={images.progress.gallery2.caption}
           arch={false}
         />
         <ArchImage
-          src="/images/hero.jpg"
-          alt="Wide view of the Golden Mind Academy site in Ayilo I Refugee Settlement: three roofed classroom buildings at dusk."
-          caption="The full site at Ayilo, Northern Uganda."
+          src={images.progress.gallery3.src}
+          alt={images.progress.gallery3.alt}
+          caption={images.progress.gallery3.caption}
           arch={false}
         />
       </div>

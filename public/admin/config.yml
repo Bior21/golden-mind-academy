@@ -79,3 +79,100 @@ collections:
                 name: "status"
                 widget: "select"
                 options: ["done", "current", "upcoming"]
+
+  - name: "site_images"
+    label: "Site Images"
+    files:
+      - name: "images"
+        label: "Photos Across the Site"
+        file: "src/data/images.json"
+        fields:
+          - label: "Header Logo"
+            name: "header"
+            widget: "object"
+            fields:
+              - label: "Logo"
+                name: "logo"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Home Page"
+            name: "home"
+            widget: "object"
+            fields:
+              - label: "Hero Photo"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+              - label: "Vision Section Photo"
+                name: "vision"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+              - label: "Mission Section Photo"
+                name: "mission"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "About Page"
+            name: "about"
+            widget: "object"
+            fields:
+              - label: "Story Photo"
+                name: "story"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+              - label: "Founder Portrait"
+                name: "founder"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+              - label: "Project Lead Portrait"
+                name: "lead"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Programs Page"
+            name: "programs"
+            widget: "object"
+            fields:
+              - label: "Academics Photo"
+                name: "academics"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Progress Page Gallery"
+            name: "progress"
+            widget: "object"
+            fields:
+              - label: "Gallery Photo 1"
+                name: "gallery1"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+                  - { label: "Caption", name: "caption", widget: "string" }
+              - label: "Gallery Photo 2"
+                name: "gallery2"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+                  - { label: "Caption", name: "caption", widget: "string" }
+              - label: "Gallery Photo 3"
+                name: "gallery3"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+                  - { label: "Caption", name: "caption", widget: "string" }

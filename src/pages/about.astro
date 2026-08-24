@@ -8,6 +8,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import StatCard from '../components/StatCard.astro';
+import images from '../data/images.json';
 ---
 
 <BaseLayout
@@ -34,8 +35,8 @@ import StatCard from '../components/StatCard.astro';
         <div class="story-img-col">
           <img
             class="story-img"
-            src="/images/site.jpg"
-            alt="The Golden Mind Academy construction site in Ayilo Refugee Settlement."
+            src={images.about.story.src}
+            alt={images.about.story.alt}
             loading="lazy"
           />
         </div>
@@ -108,8 +109,8 @@ import StatCard from '../components/StatCard.astro';
       <div class="team">
         <article class="member">
           <img
-            src="/images/founder.jpg"
-            alt="Portrait of Dut Phillip Jool Joh."
+            src={images.about.founder.src}
+            alt={images.about.founder.alt}
             loading="lazy"
           />
           <h3>Dut Phillip Jool Joh</h3>
@@ -124,8 +125,8 @@ import StatCard from '../components/StatCard.astro';
         </article>
         <article class="member">
           <img
-            src="/images/lead.jpg"
-            alt="Portrait of Mawut Peter Nyok Mabior."
+            src={images.about.lead.src}
+            alt={images.about.lead.alt}
             loading="lazy"
           />
           <h3>Mawut Peter Nyok Mabior</h3>
