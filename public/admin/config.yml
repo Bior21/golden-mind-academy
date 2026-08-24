@@ -15,7 +15,7 @@ backend:
   repo: Bior21/golden-mind-academy
   branch: main
   base_url: https://golden-mind-oauth-proxy.vercel.app
-  auth_endpoint: auth
+  auth_endpoint: api/auth
 
 media_folder: "public/images"
 public_folder: "/images"
