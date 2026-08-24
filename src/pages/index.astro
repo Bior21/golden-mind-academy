@@ -1,0 +1,507 @@
+---
+/**
+ * index.astro — HOME PAGE
+ * -----------------------
+ * Sections, top to bottom:
+ *   1. Hero — full-width photo, name, intro, two CTAs.
+ *   2. Vision — "every refugee child deserves a classroom with walls".
+ *   3. Mission — navy band, gold keywords, tagline, photo right.
+ *   4. The need in Ayilo — stat band on navy.
+ *   5. Education gap — context on Uganda's refugee crisis.
+ *   6. Funding summary — FundingBar + link to Progress.
+ *   7. Latest updates — two most recent, as teasers.
+ *
+ * Data sources: src/data/funding.json (bar), src/content/updates/
+ * (teasers). Contact/URLs from src/config/site.ts.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import StatCard from '../components/StatCard.astro';
+import FundingBar from '../components/FundingBar.astro';
+import UpdateCard from '../components/UpdateCard.astro';
+import { SITE, LINKS } from '../config/site';
+import { getCollection } from 'astro:content';
+import funding from '../data/funding.json';
+const fmt = (n: number) => '$' + n.toLocaleString('en-US');
+
+/* Two most recent updates for the teaser strip, newest first. */
+const allUpdates = await getCollection('updates');
+const latestUpdates = allUpdates
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
+---
+
+<BaseLayout title="Home" description={SITE.description}>
+  <!-- 1. HERO -->
+  <section class="hero">
+    <img
+      class="hero-photo"
+      src="/images/hero.jpg"
+      alt="The Golden Mind Academy school site in Ayilo I Refugee Settlement: three roofed classroom buildings rising on the open ground at dusk."
+    />
+    <div class="hero-copy">
+      <div class="container">
+        <Eyebrow text="Ayilo Refugee Settlement · Adjumani District · Uganda" onDark />
+        <h1>Golden Mind Academy</h1>
+        <p class="lede">
+          A refugee-led Nursery and Primary school under construction in Ayilo Refugee Settlement,
+          Uganda — giving refugee children the opportunity to learn and build a brighter future.
+        </p>
+        <div class="actions">
+          <a class="btn btn-gold" href={LINKS.gofundme} target="_blank" rel="noopener">
+            Support the build
+          </a>
+          <a class="btn btn-ghost" href="/progress/">See our progress</a>
+        </div>
+        <p class="tagline">“{SITE.tagline}”</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. VISION -->
+  <section class="section vision-band">
+    <div class="container vision-grid">
+      <div>
+        <Eyebrow text="Our vision" />
+        <h2>Every refugee child deserves a classroom with walls.</h2>
+        <p>
+          Golden Mind Academy aims to nurture ethical, peaceful, and academically strong learners
+          who will become leaders and positive contributors to society.
+        </p>
+      </div>
+      <img
+        src="/images/construction-latrine.jpg"
+        alt="Children standing beside the newly completed latrine block at the Golden Mind Academy construction site in Ayilo."
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <!-- 3. MISSION -->
+  <section class="mission-band">
+    <!-- LEFT: text column -->
+    <div class="mission-text-col">
+      <p class="mission-eyebrow">Our Mission</p>
+      <p class="mission-statement">
+        We aim to provide quality and inclusive education that promotes
+        <span class="mission-gold">academic excellence, discipline, character, leadership,</span>
+        and lifelong learning.
+      </p>
+      <p class="mission-tagline">Nurturing Leaders, Building the Nation.</p>
+    </div>
+    <!-- RIGHT: image column -->
+    <div class="mission-img-col">
+      <img
+        src="/images/site.jpg"
+        alt="A completed classroom unit with its green pyramid roof on the Golden Mind Academy site in Ayilo."
+        loading="lazy"
+      />
+    </div>
+    <!-- OVERLAY: 3-stop gradient covers the full section, topmost layer -->
+    <div class="mission-overlay" aria-hidden="true"></div>
+  </section>
+
+  <!-- 4. THE NEED -->
+  <section class="need">
+    <div class="container">
+      <Eyebrow text="The need in Ayilo" onDark />
+      <div class="stats">
+        <StatCard value="39,000+" label="refugees living in the settlement" onDark />
+        <div class="stat-callout">
+          <p class="callout-pre">Did You Know</p>
+          <p class="callout-value">61%</p>
+          <p class="callout-text">of Ayilo's total population are school-age children</p>
+        </div>
+        <StatCard value="500–800" label="students to be served each year" onDark />
+        <StatCard value="2027" label="first full academic year" onDark />
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. EDUCATION GAP -->
+  <section class="section gap-band">
+    <div class="container gap-content">
+      <h2 class="gap-title"><span class="gap-title-pill">The Education Gap</span></h2>
+      <div class="gap-cols">
+        <p class="gap-body">
+          Uganda is home to nearly 2 million refugees, making it the largest refugee-hosting
+          country in Africa. More than half are children who fled conflict in neighbouring
+          countries, especially South Sudan and the Democratic Republic of the Congo.
+        </p>
+        <p class="gap-body">
+          Ayilo Refugee Settlement is home to more than <strong>39,000 refugees</strong>.
+          <strong>61%</strong> of the settlement's population are school-age children. Existing
+          schools struggle with overcrowding, shortages of qualified teachers, and limited
+          learning materials, making it difficult for many children to access quality education.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FUNDING SUMMARY -->
+  <section class="section fund-band">
+    <div class="container fund-grid">
+      <div class="fund-left">
+        <Eyebrow text="Where we are" />
+        <h2>Construction is underway.</h2>
+        <FundingBar />
+        <a class="more" href="/progress/">See the full roadmap and budget →</a>
+      </div>
+      <div class="fund-right">
+        <p class="budget-label">Budget breakdown</p>
+        <table class="budget-table">
+          <tbody>
+            {funding.items.map((item) => (
+              <tr>
+                <td class="item-name">{item.label}</td>
+                <td class="item-cost">{fmt(item.cost)}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr class="total-row">
+              <td>Total</td>
+              <td>{fmt(funding.totalGoal)}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. LATEST UPDATES -->
+  <section class="section updates">
+    <div class="container">
+      <Eyebrow text="Updates" />
+      <h2>From the field</h2>
+      <div class="teasers">
+        {latestUpdates.map((update) => <UpdateCard update={update} teaser />)}
+      </div>
+      <a class="more" href="/progress/#updates">All updates →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ── Shared page rules (used across multiple sections) ──────────────── */
+  h1 {
+    font-size: clamp(2.8rem, 7vw, 4.2rem);
+    margin-bottom: 0.7rem;
+  }
+  h2 {
+    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+    color: var(--navy);
+    margin-bottom: 0.9rem;
+  }
+
+  /* ── 1. Hero ─────────────────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    background: var(--navy);
+    color: var(--cream);
+  }
+  .hero-photo {
+    width: 100%;
+    height: clamp(460px, 68vh, 640px);
+    object-fit: cover;
+    opacity: 0.55;
+  }
+  /* Text is anchored to the bottom of the photo via align-items: flex-end.
+     The gradient darkens the lower portion so copy stays legible. */
+  .hero-copy {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: clamp(2rem, 5vw, 3.5rem);
+    background: linear-gradient(180deg, transparent 20%, rgba(16, 26, 48, 0.88) 100%);
+  }
+  .lede {
+    max-width: 56ch;
+    color: rgba(241, 235, 220, 0.9);
+    margin-bottom: 1.4rem;
+  }
+  .actions {
+    display: flex;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+  }
+  .tagline {
+    margin-top: 1.3rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--gold-soft);
+  }
+
+  /* ── 2. Vision ───────────────────────────────────────────────────────── */
+  .vision-band {
+    background: var(--cream);
+  }
+  .vision-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .vision-grid h2 {
+    font-size: clamp(1.5rem, 2.8vw, 2rem);
+    line-height: 1.25;
+    margin-bottom: 0.8rem;
+  }
+  .vision-grid p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--ink-muted);
+  }
+  .vision-grid img {
+    border-radius: 12px;
+    border: 3px solid var(--gold);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  /* ── 3. Mission ──────────────────────────────────────────────────────── */
+  /* The <section> IS the two-column grid — no inner .container — so the image
+     can bleed to the right viewport edge while text aligns with the rest of
+     the page. Stacking order: image (default) → overlay (z-index 2) → text (z-index 3). */
+  .mission-band {
+    position: relative;
+    display: grid;
+    /* fr units stay correct if a gap is ever added; % columns would overflow. */
+    grid-template-columns: 1.4fr 1fr;
+    min-height: clamp(380px, 56vh, 520px);
+    background: #fff;
+    overflow: hidden;
+  }
+  .mission-text-col {
+    position: relative;
+    z-index: 3; /* above overlay (z-index 2) so text remains readable */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+    /* max() ensures left padding matches .container on wide viewports (so the text
+       aligns with every other page section) while never falling below the standard
+       clamp value on narrow ones. */
+    padding-left: max(clamp(1.25rem, 4vw, 2rem), calc((100vw - 1120px) / 2 + clamp(1.25rem, 4vw, 2rem)));
+    padding-right: clamp(2rem, 4vw, 3.5rem);
+  }
+  .mission-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #B08A2E;
+    margin-bottom: 1rem;
+  }
+  /* 19pt Georgia per the approved deck (19pt ≈ 1.56rem at 96dpi). */
+  .mission-statement {
+    font-family: Georgia, serif;
+    font-size: clamp(1.1rem, 1.9vw, 1.56rem);
+    font-weight: bold;
+    line-height: 1.7;
+    color: #fff;
+    margin-bottom: 1.1rem;
+  }
+  .mission-gold {
+    color: #B08A2E;
+  }
+  .mission-tagline {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    color: #B08A2E;
+  }
+  .mission-img-col {
+    position: relative;
+    padding: 2rem 2rem 2rem 0;
+  }
+  .mission-img-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+  }
+  /* 3-stop gradient from the approved deck. PPTX angle 0° = left→right = 90deg in CSS.
+     Fully opaque at the text side; fades to near-transparent on the image side. */
+  .mission-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(17,  40,  63,  1.00) 0%,
+      rgba(106, 114, 124, 0.90) 50%,
+      rgba(195, 198, 202, 0.28) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ── 4. The need in Ayilo ────────────────────────────────────────────── */
+  .need {
+    background: var(--navy);
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+    border-top: 1px solid rgba(210, 166, 47, 0.3);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+  /* Inline callout styled to visually match the <StatCard> component. */
+  .stat-callout {
+    border-left: 3px solid var(--gold);
+    background: rgba(230, 185, 77, 0.08);
+    border-radius: 6px;
+    padding: 0.9rem 1rem;
+  }
+  .callout-pre {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 0.25rem;
+  }
+  .callout-value {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1.1;
+  }
+  .callout-text {
+    font-size: 0.88rem;
+    color: #BCC8D6;
+    max-width: 22ch;
+    margin-top: 0.3rem;
+  }
+
+  /* ── 5. Education gap ────────────────────────────────────────────────── */
+  .gap-band {
+    background: var(--cream);
+  }
+  .gap-content {
+    text-align: center;
+  }
+  .gap-title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1.6rem;
+    line-height: 1;
+  }
+  .gap-title-pill {
+    display: inline-block;
+    background: #ffc000;
+    color: #000;
+    padding: 0.3em 0.9em;
+  }
+  .gap-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    text-align: left;
+  }
+  .gap-body {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    line-height: 1.8;
+  }
+  .gap-body strong {
+    font-weight: 700;
+  }
+
+  /* ── 6. Funding summary ──────────────────────────────────────────────── */
+  .fund-band {
+    background: var(--cream);
+  }
+  .fund-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+  .fund-left h2 {
+    margin-bottom: 1.4rem;
+  }
+  .budget-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-text);
+    margin-bottom: 0.9rem;
+  }
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  .budget-table td {
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(16, 26, 48, 0.1);
+    color: var(--ink-muted);
+  }
+  .item-cost {
+    text-align: right;
+    font-variant-numeric: tabular-nums; /* keeps dollar amounts vertically aligned */
+    white-space: nowrap;
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .total-row td {
+    font-weight: 700;
+    color: var(--navy);
+    border-top: 2px solid var(--gold);
+    border-bottom: none;
+    padding-top: 0.7rem;
+  }
+  .more {
+    font-weight: 600;
+    color: var(--gold-text);
+    text-decoration: none;
+  }
+  .more:hover {
+    text-decoration: underline;
+  }
+
+  /* ── 7. Latest updates ───────────────────────────────────────────────── */
+  .updates {
+    padding-top: 0; /* runs visually into the funding band above */
+  }
+  .teasers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin: 1.2rem 0;
+  }
+
+  /* ── Responsive ──────────────────────────────────────────────────────── */
+  @media (max-width: 820px) {
+    .mission-band {
+      grid-template-columns: 1fr;
+    }
+    .mission-img-col {
+      min-height: 260px;
+    }
+    .mission-text-col {
+      padding-left: clamp(1.25rem, 4vw, 2rem);
+    }
+    .vision-grid,
+    .fund-grid,
+    .gap-cols,
+    .teasers {
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+    }
+    .stats {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

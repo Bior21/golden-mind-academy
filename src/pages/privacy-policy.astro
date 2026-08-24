@@ -1,0 +1,78 @@
+---
+/**
+ * privacy-policy.astro
+ * --------------------
+ * A short, honest privacy policy matching what the site actually
+ * does (no analytics, no cookies; the contact form goes through
+ * Formspree; donations go through GoFundMe).
+ *
+ * Linked from: Footer.astro (every page).
+ * MAINTAINER NOTES: if analytics or any new service is ever added,
+ * this page must be updated to say so.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, LINKS } from '../config/site';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="How Golden Mind Academy handles your information."
+>
+  <section class="section">
+    <div class="container prose">
+      <h1>Privacy Policy</h1>
+      <p>
+        Golden Mind Academy respects your privacy. This website is a simple informational site,
+        and we collect as little as possible.
+      </p>
+
+      <h2>What we collect</h2>
+      <p>
+        We do not use cookies, analytics, or tracking of any kind. Browsing this site sends us no
+        information about you.
+      </p>
+
+      <h2>The contact form</h2>
+      <p>
+        If you use the contact form, your name, email address, and message are delivered to us by
+        Formspree, a form-handling service, so we can reply to you. We use this information only
+        to respond, and we never sell or share it.
+      </p>
+
+      <h2>Donations</h2>
+      <p>
+        Donations are processed entirely by GoFundMe on their platform, under
+        <a href="https://www.gofundme.com/c/terms" target="_blank" rel="noopener">
+          GoFundMe's own terms and privacy policy</a
+        >. We never see or store your payment details.
+      </p>
+
+      <h2>Questions</h2>
+      <p>
+        Email us at <a href={LINKS.email}>{SITE.email}</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: 70ch;
+  }
+  h1 {
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+  h2 {
+    color: var(--navy);
+    font-size: 1.2rem;
+    margin: 1.6rem 0 0.4rem;
+  }
+  p {
+    color: var(--ink-muted);
+  }
+  a {
+    color: var(--gold-text);
+    font-weight: 600;
+  }
+</style>

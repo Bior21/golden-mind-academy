@@ -1,0 +1,246 @@
+---
+/**
+ * get-involved.astro — GET INVOLVED PAGE
+ * ----------------------------------------
+ * Sections: four ways to help → sponsorship tiers →
+ * honest money-handling note → short FAQ.
+ *
+ * MAINTAINER NOTES: the `ways`, `tiers`, and `faqs` arrays below are
+ * the content — edit them there, the layout renders itself.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import { SITE, LINKS } from '../config/site';
+
+const ways = [
+  {
+    title: 'Financial contributions',
+    body: 'A gift of any size goes directly toward construction and materials — the fastest way to finish classrooms.',
+  },
+  {
+    title: 'Material donations',
+    body: 'Cement, timber, iron sheets, and classroom supplies are always needed. Tell us what you can provide.',
+  },
+  {
+    title: 'Partnerships & sponsorships',
+    body: 'Organizations and foundations can partner with us or sponsor a specific need.',
+  },
+  {
+    title: 'Outreach & visibility',
+    body: 'Share our story and help us reach new supporters — a meaningful contribution that costs nothing.',
+  },
+];
+
+const tiers = [
+  { amount: '$20,000', label: 'Complete 9 classrooms' },
+  { amount: '$5,000', label: 'Build the school fence' },
+  { amount: '$2,500', label: 'Water & sanitation' },
+];
+
+const faqs = [
+  {
+    q: 'Is my donation tax-deductible?',
+    a: 'Not at this time. Golden Mind Academy is a community-led project and does not yet hold formal charity registration. Donations are gifts toward the construction effort, made through GoFundMe.',
+  },
+  {
+    q: 'Can I donate materials instead of money?',
+    a: `Yes — in-kind donations of cement, timber, iron sheets, or classroom supplies can be arranged directly with the project team. Email ${SITE.email} to coordinate.`,
+  },
+  {
+    q: 'How do I know construction is actually happening?',
+    a: 'Dated photo updates are posted on our Progress page, matched against the public roadmap and budget. You can compare what we said with what we built.',
+  },
+  {
+    q: 'Who can I talk to before giving a larger amount?',
+    a: `Email ${SITE.email} — we're glad to answer questions, share more documentation, or arrange a call to walk through the budget and site photos.`,
+  },
+];
+---
+
+<BaseLayout
+  title="Get Involved"
+  description="Whether you give once, contribute materials, or partner with us long-term — your support builds safe classrooms."
+>
+  <!-- FOUR WAYS -->
+  <section class="section">
+    <div class="container">
+      <Eyebrow text="Ways to support" />
+      <h1>Four ways to make a difference.</h1>
+      <ul class="ways">
+        {
+          ways.map((way) => (
+            <li>
+              <h3>{way.title}</h3>
+              <p>{way.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+      <a class="btn btn-gold" href={LINKS.gofundme} target="_blank" rel="noopener">
+        Donate on GoFundMe
+      </a>
+    </div>
+  </section>
+
+  <!-- SPONSORSHIP TIERS -->
+  <section class="section tiers-band">
+    <div class="container">
+      <Eyebrow text="For organizations" />
+      <h2>Sponsor a specific need.</h2>
+      <ul class="tiers">
+        {
+          tiers.map((tier) => (
+            <li>
+              <p class="amount">{tier.amount}</p>
+              <p class="label">{tier.label}</p>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="partner">
+        To partner or sponsor, email <a href={LINKS.email}>{SITE.email}</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- MONEY-HANDLING NOTE -->
+  <section class="section">
+    <div class="container">
+      <div class="honest">
+        <Eyebrow text="How donations are handled" />
+        <p>
+          Golden Mind Academy is not yet a formally registered charity — we are a refugee-led
+          community project in its construction phase. All financial donations run through our
+          public <a href={LINKS.gofundme} target="_blank" rel="noopener">GoFundMe campaign</a>,
+          and spending on materials and labor is documented in the dated updates and budget on our
+          <a href="/progress/">Progress page</a>. When formal registration is complete, it will be
+          stated here and in the footer of every page.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq">
+    <div class="container">
+      <Eyebrow text="Questions" />
+      <h2>Before you give.</h2>
+      {
+        faqs.map((faq) => (
+          <details>
+            <summary>{faq.q}</summary>
+            <p>{faq.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1,
+  h2 {
+    font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+    color: var(--navy);
+    margin-bottom: 1.3rem;
+  }
+
+  .ways {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
+  }
+  .ways li {
+    background: var(--paper);
+    border: 1px solid var(--cream-deep);
+    border-radius: 10px;
+    padding: 1.3rem 1.4rem;
+  }
+  .ways h3 {
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+  .ways p {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+  }
+
+  .tiers-band {
+    background: var(--navy);
+    color: var(--cream);
+  }
+  .tiers-band h2 {
+    color: var(--cream);
+  }
+  .tiers {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 1.4rem;
+  }
+  .tiers li {
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 10px;
+    padding: 1.2rem 1.3rem;
+  }
+  .amount {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .tiers .label {
+    font-size: 0.88rem;
+    color: var(--ink-muted);
+  }
+  .partner a {
+    color: var(--gold-soft);
+  }
+
+  .honest {
+    background: var(--cream-deep);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 1.5rem 1.7rem;
+  }
+  .honest p {
+    color: var(--ink);
+    max-width: 75ch;
+  }
+  .honest a {
+    color: var(--gold-text);
+    font-weight: 600;
+  }
+
+  .faq {
+    padding-top: 0;
+  }
+  details {
+    border-bottom: 1px solid var(--cream-deep);
+    padding: 0.9rem 0;
+  }
+  summary {
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: var(--navy);
+    cursor: pointer;
+  }
+  details p {
+    padding-top: 0.6rem;
+    color: var(--ink-muted);
+    max-width: 70ch;
+  }
+
+  @media (max-width: 820px) {
+    .ways,
+    .tiers {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

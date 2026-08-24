@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice">
+  <rect width="800" height="900" fill="#5c6a4a"/>
+  <rect y="620" width="800" height="280" fill="#4a5540"/>
+  <g stroke="#d2a62f" stroke-width="6" fill="none" opacity="0.9"><rect x="140" y="380" width="520" height="240"/><path d="M110 380 L400 260 L690 380"/></g>
+  <text x="400" y="860" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#f1ebdc" opacity="0.85">Placeholder — replace with construction photo</text>
+</svg>

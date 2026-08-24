@@ -1,0 +1,14 @@
+{
+  "name": "golden-mind-academy",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Website for Golden Mind Academy — a refugee-led school under construction in Ayilo I Refugee Settlement, Uganda.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.16.0"
+  }
+}

@@ -1,0 +1,105 @@
+---
+/**
+ * FundingBar.astro
+ * ----------------
+ * Compact funding progress bar: amount raised vs the current phase
+ * goal, with a fill bar and "as of" date. The navy card style from
+ * the approved deck.
+ *
+ * Used by: index.astro (funding summary) and FundingTracker.astro
+ * (top of the full tracker on the Progress page).
+ *
+ * Data source: src/data/funding.json — edit numbers THERE.
+ */
+import funding from '../data/funding.json';
+
+/** Formats 5474 as "$5,474" for display. */
+const formatDollars = (amount: number) => '$' + amount.toLocaleString('en-US');
+
+/* Clamp to [0, 100]: if raised somehow exceeds the phase goal, the bar
+   fills completely rather than visually overflowing the track. */
+const percent = Math.min(100, Math.max(0, Math.round((funding.raised / funding.phaseGoal) * 100)));
+/* Append a local-time noon to the YYYY-MM-DD string before parsing.
+   Without a time component, JS treats date-only strings as UTC midnight,
+   which shifts the displayed day by one in UTC-minus timezones. */
+const asOfDate = new Date(funding.asOf + 'T12:00:00').toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<div class="card">
+  <p class="raised">
+    <span class="amount">{formatDollars(funding.raised)}</span>
+    <span class="of">raised of {formatDollars(funding.phaseGoal)}</span>
+    <span class="percent">{percent}%</span>
+  </p>
+
+  <!-- The bar itself. role/aria attributes let screen readers announce
+       it as a progress meter rather than an empty decorative div. -->
+  <div
+    class="track"
+    role="progressbar"
+    aria-valuenow={percent}
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-label={`Funding progress: ${percent} percent of current phase goal`}
+  >
+    <div class="fill" style={`width:${percent}%`}></div>
+  </div>
+
+  <p class="phase">{funding.phaseLabel} — {formatDollars(funding.phaseGoal)}</p>
+  <p class="as-of">Figures as of {asOfDate}</p>
+</div>
+
+<style>
+  .card {
+    background: var(--navy);
+    color: var(--cream);
+    border-radius: 10px;
+    padding: 1.5rem 1.7rem;
+  }
+  .raised {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .amount {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--gold-soft);
+  }
+  .of {
+    font-size: 0.9rem;
+    color: rgba(241, 235, 220, 0.8);
+  }
+  .percent {
+    margin-left: auto;
+    font-weight: 700;
+    color: var(--gold-soft);
+  }
+  .track {
+    height: 10px;
+    background: rgba(241, 235, 220, 0.18);
+    border-radius: 999px;
+    margin: 0.8rem 0;
+    overflow: hidden;
+  }
+  .fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: inherit;
+  }
+  .phase {
+    font-size: 0.88rem;
+    color: rgba(241, 235, 220, 0.85);
+  }
+  .as-of {
+    font-size: 0.78rem;
+    color: rgba(241, 235, 220, 0.6);
+    margin-top: 0.3rem;
+  }
+</style>

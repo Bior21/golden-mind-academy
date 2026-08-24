@@ -1,0 +1,55 @@
+{
+  "_README": [
+    "CONSTRUCTION ROADMAP DATA — drives the timeline on the Progress",
+    "page (rendered by src/components/Roadmap.astro).",
+    "",
+    "HOW TO UPDATE when a phase completes (example: classrooms done):",
+    "  1. On the finished phase: change 'label' from 'NOW' to the real",
+    "     completion date (e.g. 'AUGUST 2026') and 'status' to 'done'.",
+    "  2. On the next phase: change 'label' to 'NOW' and 'status' to",
+    "     'current'.",
+    "  3. Save, commit, push. Dots and colors update themselves.",
+    "",
+    "FIELDS per milestone:",
+    "  label  — small text above the title: a date for finished phases,",
+    "           or NOW / NEXT / THEN for future ones",
+    "  title  — short milestone name",
+    "  body   — one sentence of detail",
+    "  status — exactly one of: 'done' | 'current' | 'upcoming'.",
+    "           Only ONE milestone should be 'current' at a time.",
+    "           done = solid navy dot; current = glowing gold dot;",
+    "           upcoming = hollow muted dot."
+  ],
+  "milestones": [
+    {
+      "label": "April 2026",
+      "title": "Ground broken",
+      "body": "Site cleared, structural phase begins.",
+      "status": "done"
+    },
+    {
+      "label": "Now",
+      "title": "Frame & roof up",
+      "body": "Framing and roofing in place on the main building.",
+      "status": "current"
+    },
+    {
+      "label": "Next",
+      "title": "Classrooms completed",
+      "body": "Walls, floors, finishing for 9 classrooms.",
+      "status": "upcoming"
+    },
+    {
+      "label": "Then",
+      "title": "Furnish & secure",
+      "body": "Desks, water & sanitation, and a fence.",
+      "status": "upcoming"
+    },
+    {
+      "label": "2027",
+      "title": "Doors open",
+      "body": "First academic year for 500–800 students.",
+      "status": "upcoming"
+    }
+  ]
+}

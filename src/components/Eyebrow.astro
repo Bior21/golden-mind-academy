@@ -1,0 +1,37 @@
+---
+/**
+ * Eyebrow.astro
+ * -------------
+ * The small gold label that introduces a section, with a short rule
+ * before it (e.g. "— THE ROAD TO 2027"). A recurring motif from the
+ * approved deck design.
+ *
+ * Used by: most page sections across all pages.
+ *
+ * Props:
+ * - text: The label text (rendered uppercase).
+ * - onDark: Set true when the eyebrow sits on a navy background, so
+ *           it uses the lighter gold that stays readable on dark.
+ */
+interface Props {
+  text: string;
+  onDark?: boolean;
+}
+const { text, onDark = false } = Astro.props;
+---
+
+<p class:list={['eyebrow', { dark: onDark }]}>{text}</p>
+
+<style>
+  .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-text);
+    margin-bottom: 0.9rem;
+  }
+  .eyebrow.dark {
+    color: var(--gold-soft);
+  }
+</style>

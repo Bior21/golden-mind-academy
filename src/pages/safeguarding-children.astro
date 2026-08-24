@@ -1,0 +1,95 @@
+---
+/**
+ * safeguarding-children.astro
+ * ---------------------------
+ * The school's child-safeguarding commitment. Short but genuine —
+ * this matters especially for an organization serving children.
+ *
+ * Linked from: Footer.astro (every page).
+ * MAINTAINER NOTES: as the school formalizes (registration, staff
+ * hiring), expand this into the full adopted policy document.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, LINKS } from '../config/site';
+---
+
+<BaseLayout
+  title="Safeguarding Children"
+  description="Golden Mind Academy's commitment to the safety and dignity of every child."
+>
+  <section class="section">
+    <div class="container prose">
+      <h1>Safeguarding Children</h1>
+      <p>
+        Golden Mind Academy exists for children, and their safety and dignity come before
+        everything else we do. We commit to the following principles now, during construction, and
+        in the operation of the school.
+      </p>
+
+      <h2>Our commitments</h2>
+      <ul>
+        <li>
+          Every child has the right to learn in an environment free from abuse, exploitation,
+          neglect, and discrimination of any kind.
+        </li>
+        <li>
+          All staff, volunteers, and contractors will be expected to follow a child-safeguarding
+          code of conduct, and concerns will be acted on promptly.
+        </li>
+        <li>
+          Photographs of children are only shared publicly with the consent of a parent or
+          guardian, and never in a way that could put a child at risk.
+        </li>
+        <li>
+          The campus is being designed with safety in mind: a secure perimeter fence, separate
+          latrines for boys and girls, and clean water on site.
+        </li>
+      </ul>
+
+      <h2>Raising a concern</h2>
+      <p>
+        If you have any concern about the wellbeing of a child connected to this project, contact
+        us at <a href={LINKS.email}>{SITE.email}</a>. Every report is taken seriously.
+      </p>
+
+      <p class="note">
+        As the school moves toward formal registration, this commitment will be expanded into a
+        full safeguarding policy with named responsibilities and reporting procedures.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: 70ch;
+  }
+  h1 {
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+  h2 {
+    color: var(--navy);
+    font-size: 1.2rem;
+    margin: 1.6rem 0 0.4rem;
+  }
+  p,
+  li {
+    color: var(--ink-muted);
+  }
+  ul {
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  a {
+    color: var(--gold-text);
+    font-weight: 600;
+  }
+  .note {
+    margin-top: 1.4rem;
+    font-style: italic;
+    font-size: 0.92rem;
+  }
+</style>

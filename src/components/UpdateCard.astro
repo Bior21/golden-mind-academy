@@ -1,0 +1,130 @@
+---
+/**
+ * UpdateCard.astro
+ * ----------------
+ * One entry in the Updates feed: date eyebrow + category pill +
+ * headline + optional arch-framed photos + body text. Rendered
+ * inside the vertical timeline on the Progress page (gold dot
+ * markers echoing the Roadmap), or standalone as a homepage teaser.
+ *
+ * Used by: progress.astro (full feed), index.astro (latest teasers).
+ *
+ * Props:
+ * - update: One entry from the "updates" content collection
+ *           (see src/content/config.ts for its fields).
+ * - teaser: When true, renders compact — no photos, no body — for
+ *           the homepage "latest updates" strip.
+ */
+import type { CollectionEntry } from 'astro:content';
+import ArchImage from './ArchImage.astro';
+
+interface Props {
+  update: CollectionEntry<'updates'>;
+  teaser?: boolean;
+}
+const { update, teaser = false } = Astro.props;
+const { title, date, category, photos } = update.data;
+
+/** e.g. "2 June 2026" */
+const displayDate = date.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+/* The rendered Markdown body — only needed for the full (non-teaser)
+   card, but hooks must be called unconditionally. */
+const { Content } = await update.render();
+---
+
+<article class:list={['update', { teaser }]}>
+  <p class="meta">
+    <time datetime={date.toISOString().slice(0, 10)}>{displayDate}</time>
+    <span class="pill">{category}</span>
+  </p>
+  <h3>{title}</h3>
+
+  {
+    !teaser && photos && photos.length > 0 && (
+      <div class="photos" data-count={photos.length}>
+        {photos.map((photo) => (
+          <ArchImage src={photo.src} alt={photo.caption} caption={photo.caption} arch={false} />
+        ))}
+      </div>
+    )
+  }
+
+  {
+    !teaser && (
+      <div class="body">
+        <Content />
+      </div>
+    )
+  }
+</article>
+
+<style>
+  .update {
+    background: var(--paper);
+    border: 1px solid var(--cream-deep);
+    border-radius: 12px;
+    padding: 1.6rem 1.8rem;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.4rem;
+  }
+  time {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-text);
+  }
+  .pill {
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: var(--navy);
+    color: var(--cream);
+    border-radius: 999px;
+    padding: 0.15rem 0.7rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+
+  .photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  /* Single-photo updates: cap width so a lone landscape image
+     doesn't balloon to full card width. */
+  .photos[data-count='1'] {
+    max-width: 440px;
+  }
+
+  .body {
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .body :global(p + p) {
+    margin-top: 0.8rem;
+  }
+
+  /* Teaser variant (homepage): tighter padding, smaller headline. */
+  .update.teaser {
+    padding: 1.2rem 1.4rem;
+  }
+  .update.teaser h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+  }
+</style>

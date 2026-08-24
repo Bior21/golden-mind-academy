@@ -1,0 +1,41 @@
+# deploy.yml
+# ----------
+# Builds the Astro site and publishes it to GitHub Pages on every
+# push to `main`. Nothing to run by hand: push → live in ~1 minute.
+#
+# ONE-TIME REPO SETUP (in the GitHub web interface):
+#   Settings → Pages → Source: "GitHub Actions".
+#   Settings → Pages → Custom domain: golden-mind.org
+#   (public/CNAME keeps the domain attached across deploys.)
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # allows manual re-deploys from the Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Build site with Astro
+        uses: withastro/action@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,55 @@
+---
+/**
+ * ArchImage.astro
+ * ---------------
+ * A photo in the arch-shaped frame — the site's recurring visual
+ * motif (echoing classroom doorways) — with an optional caption.
+ *
+ * Used by: home, about, programs, progress pages and UpdateCard.
+ *
+ * Props:
+ * - src:     Image path. Put photos in public/images/ and pass
+ *            "/images/<filename>". Name files by date, e.g.
+ *            "2026-06-roofing.jpg", so the folder reads as a timeline.
+ * - alt:     REQUIRED description of what the photo shows (used by
+ *            screen readers and shown if the image fails to load).
+ * - caption: Optional visible caption below the image.
+ * - arch:    Set false for a plain rounded rectangle instead of the
+ *            arch (used for wide landscape shots).
+ */
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  arch?: boolean;
+}
+const { src, alt, caption, arch = true } = Astro.props;
+---
+
+<figure>
+  <img class:list={[{ arch }]} src={src} alt={alt} loading="lazy" />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  figure {
+    margin: 0;
+  }
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 4.6;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid var(--gold);
+    background: var(--cream-deep);
+  }
+  img.arch {
+    border-radius: var(--radius-arch);
+  }
+  figcaption {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    margin-top: 0.6rem;
+    text-align: center;
+  }
+</style>

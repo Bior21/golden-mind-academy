@@ -1,0 +1,42 @@
+---
+/**
+ * 404.astro
+ * ---------
+ * Custom "page not found" page, in the site's style, with a path
+ * back home. GitHub Pages serves this automatically for unknown URLs.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found" description="This page doesn't exist.">
+  <section class="section">
+    <div class="container wrap">
+      <p class="code" aria-hidden="true">404</p>
+      <h1>This page doesn't exist.</h1>
+      <p>The page you're looking for may have moved, or the address may be mistyped.</p>
+      <a class="btn btn-gold" href="/">Back to the homepage</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .wrap {
+    text-align: center;
+    padding-block: 3rem;
+  }
+  .code {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+  h1 {
+    color: var(--navy);
+    margin: 0.5rem 0 0.7rem;
+  }
+  p:not(.code) {
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+  }
+</style>

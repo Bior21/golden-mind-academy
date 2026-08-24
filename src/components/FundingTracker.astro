@@ -1,0 +1,73 @@
+---
+/**
+ * FundingTracker.astro
+ * --------------------
+ * The full funding picture for the Progress page: the FundingBar
+ * summary on the left, and the itemized budget (what the total goal
+ * is made of) on the right.
+ *
+ * Used by: progress.astro only. The homepage uses FundingBar alone.
+ *
+ * Data source: src/data/funding.json — edit numbers THERE.
+ */
+import funding from '../data/funding.json';
+import FundingBar from './FundingBar.astro';
+
+const formatDollars = (amount: number) => '$' + amount.toLocaleString('en-US');
+---
+
+<div class="tracker">
+  <div class="summary">
+    <h3>{formatDollars(funding.phaseGoal)} completes the next phase.</h3>
+    <FundingBar />
+  </div>
+
+  <div class="budget">
+    <h3>{formatDollars(funding.totalGoal)} makes it ready for operation.</h3>
+    <ul>
+      {
+        funding.items.map((item) => (
+          <li>
+            <span class="label">{item.label}</span>
+            <span class="cost">{formatDollars(item.cost)}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<style>
+  .tracker {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  h3 {
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+  .budget ul {
+    list-style: none;
+  }
+  .budget li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--cream-deep);
+    font-size: 0.95rem;
+  }
+  .cost {
+    font-weight: 700;
+    color: var(--navy);
+  }
+  @media (max-width: 820px) {
+    .tracker {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,93 @@
+---
+/**
+ * BaseLayout.astro
+ * ----------------
+ * The shared HTML shell wrapped around EVERY page: <head> metadata
+ * (SEO + social share tags), fonts, global styles, skip link,
+ * Header, page content (<slot/>), and Footer.
+ *
+ * Used by: every file in src/pages/.
+ *
+ * Props:
+ * - title:       Page title shown in the browser tab and search results.
+ *                The site name is appended automatically.
+ * - description: One-sentence page summary for search engines and
+ *                social link previews. Falls back to SITE.description.
+ *
+ * MAINTAINER NOTES:
+ * - Site-wide values (name, description) come from src/config/site.ts.
+ * - Fonts are loaded from Google Fonts: Fraunces (headlines) and
+ *   Inter (body). Changing fonts means editing the <link> below AND
+ *   the --font-* tokens in src/styles/global.css.
+ */
+import '../styles/global.css';
+import { SITE } from '../config/site';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = SITE.description } = Astro.props;
+const fullTitle = `${title} — ${SITE.name}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Social share (Open Graph / Twitter) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Fonts: Fraunces (display serif) + Inter (body sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Accessibility: lets keyboard users jump past the nav -->
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <Header />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 200;
+    background: var(--navy);
+    color: var(--cream);
+    padding: 0.6rem 1rem;
+    border-radius: 0 0 6px 6px;
+    text-decoration: none;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+</style>

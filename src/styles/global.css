@@ -1,0 +1,155 @@
+/**
+ * global.css
+ * ----------
+ * Design tokens (CSS custom properties) + base element styles +
+ * small set of shared utility classes.
+ *
+ * Used by: BaseLayout.astro (imported once, applies everywhere).
+ *
+ * MAINTAINER NOTES:
+ * - All colors live in :root below. To adjust the palette, edit the
+ *   token — never hard-code a hex value inside a component.
+ * - `--gold` is for decoration (lines, dots, buttons). `--gold-text`
+ *   is a darker variant that passes WCAG contrast on cream — use it
+ *   whenever gold appears as TEXT on a light background.
+ */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Palette (from the approved deck design) */
+  --cream: #f1ebdc;        /* dominant page background */
+  --cream-deep: #e8e0cb;   /* cards / alternate bands on cream */
+  --navy: #17233e;         /* dark sections, footer, headings */
+  --navy-deep: #101a30;    /* darkest navy — footer bottom, hovers */
+  --gold: #d2a62f;         /* accent: buttons, dots, wave crest */
+  --gold-soft: #e5c86b;    /* lighter gold for hovers on navy */
+  --gold-text: #8a6a15;    /* WCAG-safe gold for text on cream */
+  --ink: #1c2438;          /* body text on cream */
+  --ink-muted: #565d70;    /* secondary text on cream */
+  --paper: #faf7ef;        /* near-white card surface */
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+
+  /* Layout */
+  --container: 1120px;
+  --radius-arch: 999px 999px 12px 12px; /* the arch photo motif */
+  --section-pad: clamp(3.5rem, 8vw, 6rem);
+}
+
+/* ---------- Base ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+/* Accessibility: visible focus for keyboard users */
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Accessibility: respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Shared utilities ---------- */
+
+/* Centered content column. Used by nearly every section. */
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+}
+
+/* Vertical rhythm for page sections. */
+.section {
+  padding-block: var(--section-pad);
+}
+
+/* Buttons. `.btn-gold` = primary (donate/CTAs), `.btn-ghost` = secondary. */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+.btn-gold:hover {
+  background: var(--gold-soft);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+.btn-ghost:hover {
+  background: rgba(210, 166, 47, 0.15);
+}
+
+/* Screen-reader-only text (e.g. icon labels). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,206 @@
+---
+/**
+ * Header.astro
+ * ------------
+ * Site-wide sticky header: logo + name (left), navigation links
+ * (center-right), gold Donate button (far right), and a hamburger
+ * menu on small screens.
+ *
+ * Used by: BaseLayout.astro (appears on every page).
+ *
+ * MAINTAINER NOTES:
+ * - Navigation items come from NAV in src/config/site.ts — edit the
+ *   list THERE to add/rename/reorder pages.
+ * - The Donate button URL comes from LINKS.gofundme in site.ts.
+ * - The current page's nav link is highlighted automatically by
+ *   comparing each item's href with the page URL.
+ * - The only JavaScript on the site lives at the bottom of this file
+ *   (opening/closing the mobile menu).
+ */
+import { SITE, NAV, LINKS } from '../config/site';
+
+/* Astro serves pages with a trailing slash (/about/), but the NAV hrefs
+   also have trailing slashes, so the simple equality check works in most cases.
+   The fallback strips the trailing slash to handle any server config that omits it. */
+const currentPath = Astro.url.pathname;
+const isCurrent = (href: string) => currentPath === href || currentPath === href.replace(/\/$/, '');
+---
+
+<header class="header">
+  <div class="container bar">
+    <a class="brand" href="/">
+      <img class="mark" src="/images/logo.jpg" alt="Golden Mind Academy crest" />
+      <span class="brand-text">
+        <span class="brand-name">{SITE.name}</span>
+        <span class="brand-tag">{SITE.tagline}</span>
+      </span>
+    </a>
+
+    <!-- Mobile menu toggle (hidden on desktop) -->
+    <button class="menu-btn" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Menu</span>
+      <span class="menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav id="site-nav" class="nav" aria-label="Main">
+      <ul>
+        {
+          NAV.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a class="btn btn-gold donate" href={LINKS.gofundme} target="_blank" rel="noopener">
+        Donate
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy);
+    border-bottom: 1px solid rgba(210, 166, 47, 0.3);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.8rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: var(--cream);
+  }
+  .mark {
+    width: 44px;
+    height: 44px;
+    flex: none;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .brand-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .brand-tag {
+    font-size: 0.68rem;
+    font-style: italic;
+    color: var(--gold-soft);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+  .nav ul {
+    display: flex;
+    gap: 1.4rem;
+    list-style: none;
+  }
+  .nav a:not(.donate) {
+    color: var(--cream);
+    opacity: 0.8;
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+  .nav a:not(.donate):hover,
+  .nav a[aria-current='page'] {
+    opacity: 1;
+  }
+  .nav a[aria-current='page'] {
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 2px;
+  }
+
+  /* Mobile menu button — three-line hamburger drawn with borders */
+  .menu-btn {
+    display: none;
+    background: none;
+    border: 1px solid rgba(241, 235, 220, 0.4);
+    border-radius: 6px;
+    padding: 0.55rem 0.6rem;
+    cursor: pointer;
+  }
+  .menu-icon,
+  .menu-icon::before,
+  .menu-icon::after {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--cream);
+    content: '';
+  }
+  .menu-icon {
+    position: relative;
+  }
+  .menu-icon::before {
+    position: absolute;
+    top: -6px;
+  }
+  .menu-icon::after {
+    position: absolute;
+    top: 6px;
+  }
+
+  @media (max-width: 820px) {
+    .menu-btn {
+      display: block;
+    }
+    .nav {
+      /* Collapsed by default; .open is toggled by the script below */
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--navy-deep);
+      flex-direction: column;
+      align-items: stretch;
+      padding: 1rem 1.5rem 1.5rem;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(210, 166, 47, 0.3);
+    }
+    .nav.open {
+      display: flex;
+    }
+    .nav ul {
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .brand-tag {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu: toggles the .open class and keeps aria-expanded in
+  // sync so screen readers announce the state correctly.
+  const btn = document.querySelector('.menu-btn');
+  const nav = document.getElementById('site-nav');
+  btn?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(Boolean(open)));
+  });
+</script>
