@@ -1,0 +1,81 @@
+# Decap CMS configuration
+# ------------------------
+# Gives non-technical editors a form-based UI at /admin to update the
+# site's recurring content (progress updates, funding numbers, the
+# roadmap) without touching code. Saving in the CMS commits directly
+# to the `main` branch, which triggers the same GitHub Actions deploy
+# as a normal push.
+#
+# base_url below must point at a deployed OAuth proxy — GitHub Pages
+# can't run the server-side half of GitHub's login flow itself.
+# See project notes for how that proxy is set up.
+
+backend:
+  name: github
+  repo: Bior21/golden-mind-academy
+  branch: main
+  base_url: https://golden-mind-oauth-proxy.vercel.app
+  auth_endpoint: auth
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "updates"
+    label: "Progress Updates"
+    folder: "src/content/updates"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "date" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Construction", "Fundraising", "Community", "Announcement"]
+      - label: "Photos"
+        name: "photos"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - { label: "Caption", name: "caption", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "funding"
+    label: "Funding"
+    files:
+      - name: "funding"
+        label: "Funding Numbers"
+        file: "src/data/funding.json"
+        fields:
+          - { label: "As Of Date", name: "asOf", widget: "date", format: "YYYY-MM-DD" }
+          - { label: "Amount Raised (USD)", name: "raised", widget: "number", value_type: "int" }
+          - { label: "Current Phase Goal (USD)", name: "phaseGoal", widget: "number", value_type: "int" }
+          - { label: "Current Phase Label", name: "phaseLabel", widget: "string" }
+          - { label: "Total Goal (USD)", name: "totalGoal", widget: "number", value_type: "int" }
+          - label: "Budget Line Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Cost (USD)", name: "cost", widget: "number", value_type: "int" }
+
+  - name: "roadmap"
+    label: "Construction Roadmap"
+    files:
+      - name: "roadmap"
+        label: "Roadmap Milestones"
+        file: "src/data/roadmap.json"
+        fields:
+          - label: "Milestones"
+            name: "milestones"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "string" }
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                options: ["done", "current", "upcoming"]
