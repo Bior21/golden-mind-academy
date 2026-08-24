@@ -1,0 +1,29 @@
+{
+  "_README": [
+    "PROGRESS PAGE CONTENT — status header and section labels.",
+    "Gallery photos/captions live in src/data/images.json. Roadmap",
+    "milestones live in src/data/roadmap.json. Funding numbers live",
+    "in src/data/funding.json. Update entries live in",
+    "src/content/updates/."
+  ],
+  "status": {
+    "eyebrow": "Early structural phase — in progress",
+    "title": "Construction began in April 2026.",
+    "lede": "The timber frame is up and roofing is in place across the main building. Continued progress depends on securing additional materials, labor, and funding. Every gift takes us a measurable step closer to walled, finished classrooms."
+  },
+  "roadmap": {
+    "eyebrow": "The road to 2027",
+    "title": "Our Construction Roadmap."
+  },
+  "tracker": {
+    "eyebrow": "Funding tracker",
+    "donateButton": "Donate on GoFundMe"
+  },
+  "updates": {
+    "eyebrow": "Updates",
+    "title": "Follow the build.",
+    "lede": "Dated updates from the field — construction progress, fundraising milestones, community activities, and school announcements. You can also",
+    "ledeLink": "follow along on Facebook",
+    "empty": "Updates coming soon — construction is underway."
+  }
+}

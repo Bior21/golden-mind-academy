@@ -19,6 +19,7 @@ import UpdateCard from '../components/UpdateCard.astro';
 import { LINKS } from '../config/site';
 import { getCollection } from 'astro:content';
 import images from '../data/images.json';
+import content from '../data/pages/progress.json';
 
 /* All updates, newest first. */
 const updates = (await getCollection('updates')).sort(
@@ -33,12 +34,10 @@ const updates = (await getCollection('updates')).sort(
   <!-- STATUS + GALLERY -->
   <section class="section">
     <div class="container">
-      <Eyebrow text="Early structural phase — in progress" />
-      <h1>Construction began in April 2026.</h1>
+      <Eyebrow text={content.status.eyebrow} />
+      <h1>{content.status.title}</h1>
       <p class="lede">
-        The timber frame is up and roofing is in place across the main building. Continued
-        progress depends on securing additional materials, labor, and funding. Every gift takes us
-        a measurable step closer to walled, finished classrooms.
+        {content.status.lede}
       </p>
       <div class="gallery">
         <ArchImage
@@ -66,8 +65,8 @@ const updates = (await getCollection('updates')).sort(
   <!-- ROADMAP -->
   <section class="section roadmap">
     <div class="container">
-      <Eyebrow text="The road to 2027" />
-      <h2>Our Construction Roadmap.</h2>
+      <Eyebrow text={content.roadmap.eyebrow} />
+      <h2>{content.roadmap.title}</h2>
       <Roadmap />
     </div>
   </section>
@@ -75,11 +74,11 @@ const updates = (await getCollection('updates')).sort(
   <!-- FUNDING TRACKER -->
   <section class="section tracker">
     <div class="container">
-      <Eyebrow text="Funding tracker" />
+      <Eyebrow text={content.tracker.eyebrow} />
       <FundingTracker />
       <p class="give">
         <a class="btn btn-gold" href={LINKS.gofundme} target="_blank" rel="noopener">
-          Donate on GoFundMe
+          {content.tracker.donateButton}
         </a>
       </p>
     </div>
@@ -88,18 +87,17 @@ const updates = (await getCollection('updates')).sort(
   <!-- UPDATES FEED -->
   <section class="section" id="updates">
     <div class="container">
-      <Eyebrow text="Updates" />
-      <h2>Follow the build.</h2>
+      <Eyebrow text={content.updates.eyebrow} />
+      <h2>{content.updates.title}</h2>
       <p class="lede">
-        Dated updates from the field — construction progress, fundraising milestones, community
-        activities, and school announcements. You can also
-        <a href={LINKS.facebook} target="_blank" rel="noopener">follow along on Facebook</a>.
+        {content.updates.lede}
+        <a href={LINKS.facebook} target="_blank" rel="noopener">{content.updates.ledeLink}</a>.
       </p>
 
       {
         updates.length === 0 ? (
           /* Empty state: shown only if every update file is removed. */
-          <p class="empty">Updates coming soon — construction is underway.</p>
+          <p class="empty">{content.updates.empty}</p>
         ) : (
           <ol class="feed">
             {updates.map((update) => (

@@ -1,0 +1,52 @@
+{
+  "_README": [
+    "HOME PAGE CONTENT — every text field on the Home page.",
+    "Edit here (or via the CMS at /admin) to change wording, stats,",
+    "or button labels. Photos live in src/data/images.json instead.",
+    "Body fields support **bold** markdown; everything else is plain text."
+  ],
+  "hero": {
+    "eyebrow": "Ayilo Refugee Settlement · Adjumani District · Uganda",
+    "title": "Golden Mind Academy",
+    "lede": "A refugee-led Nursery and Primary school under construction in Ayilo Refugee Settlement, Uganda — giving refugee children the opportunity to learn and build a brighter future.",
+    "ctaPrimary": "Support the build",
+    "ctaSecondary": "See our progress"
+  },
+  "vision": {
+    "eyebrow": "Our vision",
+    "title": "Every refugee child deserves a classroom with walls.",
+    "body": "Golden Mind Academy aims to nurture ethical, peaceful, and academically strong learners who will become leaders and positive contributors to society."
+  },
+  "mission": {
+    "eyebrow": "Our Mission",
+    "statementPre": "We aim to provide quality and inclusive education that promotes",
+    "statementGold": "academic excellence, discipline, character, leadership,",
+    "statementPost": "and lifelong learning.",
+    "tagline": "Nurturing Leaders, Building the Nation."
+  },
+  "need": {
+    "eyebrow": "The need in Ayilo",
+    "stat1Value": "39,000+",
+    "stat1Label": "refugees living in the settlement",
+    "calloutPre": "Did You Know",
+    "calloutValue": "61%",
+    "calloutText": "of Ayilo's total population are school-age children",
+    "stat2Value": "500–800",
+    "stat2Label": "students to be served each year",
+    "stat3Value": "2027",
+    "stat3Label": "first full academic year"
+  },
+  "gap": {
+    "title": "The Education Gap",
+    "body1": "Uganda is home to nearly 2 million refugees, making it the largest refugee-hosting country in Africa. More than half are children who fled conflict in neighbouring countries, especially South Sudan and the Democratic Republic of the Congo.",
+    "body2": "Ayilo Refugee Settlement is home to more than **39,000 refugees**. **61%** of the settlement's population are school-age children. Existing schools struggle with overcrowding, shortages of qualified teachers, and limited learning materials, making it difficult for many children to access quality education."
+  },
+  "funding": {
+    "eyebrow": "Where we are",
+    "title": "Construction is underway."
+  },
+  "updates": {
+    "eyebrow": "Updates",
+    "title": "From the field"
+  }
+}

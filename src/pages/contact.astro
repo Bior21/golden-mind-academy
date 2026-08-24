@@ -14,6 +14,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import { SITE, LINKS, FORMSPREE_ID } from '../config/site';
+import content from '../data/pages/contact.json';
 ---
 
 <BaseLayout
@@ -24,42 +25,41 @@ import { SITE, LINKS, FORMSPREE_ID } from '../config/site';
     <div class="container split">
       <!-- FORM -->
       <form method="POST" action={`https://formspree.io/f/${FORMSPREE_ID}`}>
-        <Eyebrow text="Send a message" />
+        <Eyebrow text={content.form.eyebrow} />
 
-        <label for="name">Your name</label>
+        <label for="name">{content.form.nameLabel}</label>
         <input id="name" name="name" type="text" required autocomplete="name" />
 
-        <label for="email">Your email</label>
+        <label for="email">{content.form.emailLabel}</label>
         <input id="email" name="email" type="email" required autocomplete="email" />
 
-        <label for="message">Message</label>
+        <label for="message">{content.form.messageLabel}</label>
         <textarea id="message" name="message" rows="6" required></textarea>
 
         <!-- Honeypot spam trap — invisible to people, filled by bots -->
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-        <button class="btn btn-gold" type="submit">Send message</button>
+        <button class="btn btn-gold" type="submit">{content.form.submitButton}</button>
         <p class="fallback">
-          Prefer email? Write to us directly at <a href={LINKS.email}>{SITE.email}</a>.
+          {content.form.fallbackText} <a href={LINKS.email}>{SITE.email}</a>.
         </p>
       </form>
 
       <!-- DIRECT DETAILS -->
       <div class="details">
-        <Eyebrow text="Help us finish what we've started" />
-        <h1>Every contribution builds a future.</h1>
+        <Eyebrow text={content.details.eyebrow} />
+        <h1>{content.details.title}</h1>
         <p class="blurb">
-          Every contribution builds a future for the refugee children to whom Golden Mind Academy
-          will become a home.
+          {content.details.blurb}
         </p>
         <dl>
-          <dt>Email</dt>
+          <dt>{content.details.emailLabel}</dt>
           <dd><a href={LINKS.email}>{SITE.email}</a></dd>
-          <dt>Location</dt>
+          <dt>{content.details.locationLabel}</dt>
           <dd>
             {SITE.location.line1}, {SITE.location.line2}, {SITE.location.line3}
           </dd>
-          <dt>Follow &amp; support</dt>
+          <dt>{content.details.followLabel}</dt>
           <dd class="buttons">
             <a class="btn btn-gold" href={LINKS.gofundme} target="_blank" rel="noopener">
               GoFundMe

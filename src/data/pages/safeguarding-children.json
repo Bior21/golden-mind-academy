@@ -1,0 +1,23 @@
+{
+  "_README": [
+    "SAFEGUARDING CHILDREN PAGE CONTENT — title, intro, a bulleted",
+    "list of commitments, and a closing section. Body supports",
+    "**bold** and [link](url) markdown."
+  ],
+  "title": "Safeguarding Children",
+  "intro": "Golden Mind Academy exists for children, and their safety and dignity come before everything else we do. We commit to the following principles now, during construction, and in the operation of the school.",
+  "commitments": {
+    "heading": "Our commitments",
+    "items": [
+      "Every child has the right to learn in an environment free from abuse, exploitation, neglect, and discrimination of any kind.",
+      "All staff, volunteers, and contractors will be expected to follow a child-safeguarding code of conduct, and concerns will be acted on promptly.",
+      "Photographs of children are only shared publicly with the consent of a parent or guardian, and never in a way that could put a child at risk.",
+      "The campus is being designed with safety in mind: a secure perimeter fence, separate latrines for boys and girls, and clean water on site."
+    ]
+  },
+  "concern": {
+    "heading": "Raising a concern",
+    "body": "If you have any concern about the wellbeing of a child connected to this project, contact us at {{email}}. Every report is taken seriously."
+  },
+  "note": "As the school moves toward formal registration, this commitment will be expanded into a full safeguarding policy with named responsibilities and reporting procedures."
+}

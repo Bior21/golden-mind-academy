@@ -1,0 +1,23 @@
+{
+  "_README": [
+    "CONTACT PAGE CONTENT — form labels and the details panel copy.",
+    "Email/location/social links come from src/config/site.ts instead,",
+    "since those are used across the whole site."
+  ],
+  "form": {
+    "eyebrow": "Send a message",
+    "nameLabel": "Your name",
+    "emailLabel": "Your email",
+    "messageLabel": "Message",
+    "submitButton": "Send message",
+    "fallbackText": "Prefer email? Write to us directly at"
+  },
+  "details": {
+    "eyebrow": "Help us finish what we've started",
+    "title": "Every contribution builds a future.",
+    "blurb": "Every contribution builds a future for the refugee children to whom Golden Mind Academy will become a home.",
+    "emailLabel": "Email",
+    "locationLabel": "Location",
+    "followLabel": "Follow & support"
+  }
+}

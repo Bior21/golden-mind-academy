@@ -1,0 +1,27 @@
+{
+  "_README": [
+    "PRIVACY POLICY CONTENT — title plus an ordered list of",
+    "sections (heading + body). Add/remove/reorder sections freely.",
+    "Body supports **bold** and [link](url) markdown."
+  ],
+  "title": "Privacy Policy",
+  "intro": "Golden Mind Academy respects your privacy. This website is a simple informational site, and we collect as little as possible.",
+  "sections": [
+    {
+      "heading": "What we collect",
+      "body": "We do not use cookies, analytics, or tracking of any kind. Browsing this site sends us no information about you."
+    },
+    {
+      "heading": "The contact form",
+      "body": "If you use the contact form, your name, email address, and message are delivered to us by Formspree, a form-handling service, so we can reply to you. We use this information only to respond, and we never sell or share it."
+    },
+    {
+      "heading": "Donations",
+      "body": "Donations are processed entirely by GoFundMe on their platform, under [GoFundMe's own terms and privacy policy](https://www.gofundme.com/c/terms). We never see or store your payment details."
+    },
+    {
+      "heading": "Questions",
+      "body": "Email us at {{email}}."
+    }
+  ]
+}

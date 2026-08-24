@@ -176,3 +176,279 @@ collections:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
                   - { label: "Caption", name: "caption", widget: "string" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "src/data/pages/home.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+              - { label: "Primary Button Text", name: "ctaPrimary", widget: "string" }
+              - { label: "Secondary Button Text", name: "ctaSecondary", widget: "string" }
+          - label: "Vision Section"
+            name: "vision"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "Mission Section"
+            name: "mission"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Statement (before gold text)", name: "statementPre", widget: "string" }
+              - { label: "Statement (gold text)", name: "statementGold", widget: "string" }
+              - { label: "Statement (after gold text)", name: "statementPost", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+          - label: "The Need Section"
+            name: "need"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Stat 1 Value", name: "stat1Value", widget: "string" }
+              - { label: "Stat 1 Label", name: "stat1Label", widget: "string" }
+              - { label: "Callout Pre-text", name: "calloutPre", widget: "string" }
+              - { label: "Callout Value", name: "calloutValue", widget: "string" }
+              - { label: "Callout Text", name: "calloutText", widget: "string" }
+              - { label: "Stat 2 Value", name: "stat2Value", widget: "string" }
+              - { label: "Stat 2 Label", name: "stat2Label", widget: "string" }
+              - { label: "Stat 3 Value", name: "stat3Value", widget: "string" }
+              - { label: "Stat 3 Label", name: "stat3Label", widget: "string" }
+          - label: "Education Gap Section"
+            name: "gap"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body Paragraph 1", name: "body1", widget: "text" }
+              - { label: "Body Paragraph 2", name: "body2", widget: "text", hint: "Supports **bold** markdown." }
+          - label: "Funding Summary Section"
+            name: "funding"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+          - label: "Updates Section"
+            name: "updates"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+
+      - name: "about"
+        label: "About Page"
+        file: "src/data/pages/about.json"
+        fields:
+          - label: "Founder Story"
+            name: "story"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Quote", name: "quote", widget: "string" }
+              - { label: "Quote Attribution", name: "quoteAttribution", widget: "string" }
+              - { label: "Body Paragraph 1", name: "body1", widget: "text" }
+              - { label: "Body Paragraph 2", name: "body2", widget: "text" }
+              - { label: "Body Paragraph 3", name: "body3", widget: "text", hint: "Supports **bold** markdown." }
+              - { label: "Body Paragraph 4", name: "body4", widget: "text", hint: "Supports **bold** markdown." }
+          - label: "Who We Serve"
+            name: "serve"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+              - { label: "Stat 1 Value", name: "stat1Value", widget: "string" }
+              - { label: "Stat 1 Label", name: "stat1Label", widget: "string" }
+              - { label: "Stat 2 Value", name: "stat2Value", widget: "string" }
+              - { label: "Stat 2 Label", name: "stat2Label", widget: "string" }
+          - label: "Team"
+            name: "team"
+            widget: "object"
+            fields:
+              - { label: "Section Title", name: "title", widget: "string" }
+              - { label: "Founder Name", name: "founderName", widget: "string" }
+              - { label: "Founder Role", name: "founderRole", widget: "string" }
+              - { label: "Founder Bio", name: "founderBio", widget: "text" }
+              - { label: "Lead Name", name: "leadName", widget: "string" }
+              - { label: "Lead Role", name: "leadRole", widget: "string" }
+              - { label: "Lead Bio", name: "leadBio", widget: "text" }
+
+      - name: "programs"
+        label: "Programs Page"
+        file: "src/data/pages/programs.json"
+        fields:
+          - label: "Academics Section"
+            name: "academics"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body Paragraph 1", name: "body1", widget: "text" }
+              - { label: "Body Paragraph 2", name: "body2", widget: "text" }
+          - label: "Facilities Section"
+            name: "facilities"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Facilities List"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Detail", name: "detail", widget: "string" }
+
+      - name: "progress"
+        label: "Progress Page"
+        file: "src/data/pages/progress.json"
+        fields:
+          - label: "Status Section"
+            name: "status"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+          - label: "Roadmap Section"
+            name: "roadmap"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+          - label: "Funding Tracker Section"
+            name: "tracker"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Donate Button Text", name: "donateButton", widget: "string" }
+          - label: "Updates Section"
+            name: "updates"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Lede (before link)", name: "lede", widget: "text" }
+              - { label: "Lede Link Text", name: "ledeLink", widget: "string" }
+              - { label: "Empty State Text", name: "empty", widget: "string" }
+
+      - name: "get_involved"
+        label: "Get Involved Page"
+        file: "src/data/pages/get-involved.json"
+        fields:
+          - label: "Ways to Support Section"
+            name: "ways"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Donate Button Text", name: "donateButton", widget: "string" }
+              - label: "Ways List"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+          - label: "Sponsorship Tiers Section"
+            name: "tiers"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Partner Text (before email)", name: "partnerText", widget: "string" }
+              - label: "Tiers List"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Amount", name: "amount", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+          - label: "How Donations Are Handled Section"
+            name: "honest"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Body (before GoFundMe link)", name: "bodyPre", widget: "text" }
+              - { label: "GoFundMe Link Text", name: "gofundmeLinkText", widget: "string" }
+              - { label: "Body (between links)", name: "bodyMid", widget: "text" }
+              - { label: "Progress Page Link Text", name: "progressLinkText", widget: "string" }
+              - { label: "Body (after Progress link)", name: "bodyPost", widget: "text" }
+          - label: "FAQ Section"
+            name: "faq"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Questions"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Question", name: "q", widget: "string" }
+                  - { label: "Answer", name: "a", widget: "text", hint: "Use {{email}} to insert the contact email automatically." }
+
+      - name: "contact"
+        label: "Contact Page"
+        file: "src/data/pages/contact.json"
+        fields:
+          - label: "Form"
+            name: "form"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Name Field Label", name: "nameLabel", widget: "string" }
+              - { label: "Email Field Label", name: "emailLabel", widget: "string" }
+              - { label: "Message Field Label", name: "messageLabel", widget: "string" }
+              - { label: "Submit Button Text", name: "submitButton", widget: "string" }
+              - { label: "Fallback Text (before email)", name: "fallbackText", widget: "string" }
+          - label: "Details Panel"
+            name: "details"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Blurb", name: "blurb", widget: "text" }
+              - { label: "Email Label", name: "emailLabel", widget: "string" }
+              - { label: "Location Label", name: "locationLabel", widget: "string" }
+              - { label: "Follow & Support Label", name: "followLabel", widget: "string" }
+
+      - name: "privacy_policy"
+        label: "Privacy Policy Page"
+        file: "src/data/pages/privacy-policy.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "text", hint: "Supports **bold**, [link](url), and {{email}} markdown." }
+
+      - name: "safeguarding_children"
+        label: "Safeguarding Children Page"
+        file: "src/data/pages/safeguarding-children.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - label: "Commitments"
+            name: "commitments"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+          - label: "Raising a Concern"
+            name: "concern"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "text", hint: "Use {{email}} to insert the contact email automatically." }
+          - { label: "Closing Note", name: "note", widget: "text" }

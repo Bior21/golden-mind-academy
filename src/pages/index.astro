@@ -23,6 +23,8 @@ import { SITE, LINKS } from '../config/site';
 import { getCollection } from 'astro:content';
 import funding from '../data/funding.json';
 import images from '../data/images.json';
+import content from '../data/pages/home.json';
+import { mdInline } from '../lib/markdown';
 const fmt = (n: number) => '$' + n.toLocaleString('en-US');
 
 /* Two most recent updates for the teaser strip, newest first. */
@@ -42,17 +44,16 @@ const latestUpdates = allUpdates
     />
     <div class="hero-copy">
       <div class="container">
-        <Eyebrow text="Ayilo Refugee Settlement · Adjumani District · Uganda" onDark />
-        <h1>Golden Mind Academy</h1>
+        <Eyebrow text={content.hero.eyebrow} onDark />
+        <h1>{content.hero.title}</h1>
         <p class="lede">
-          A refugee-led Nursery and Primary school under construction in Ayilo Refugee Settlement,
-          Uganda — giving refugee children the opportunity to learn and build a brighter future.
+          {content.hero.lede}
         </p>
         <div class="actions">
           <a class="btn btn-gold" href={LINKS.gofundme} target="_blank" rel="noopener">
-            Support the build
+            {content.hero.ctaPrimary}
           </a>
-          <a class="btn btn-ghost" href="/progress/">See our progress</a>
+          <a class="btn btn-ghost" href="/progress/">{content.hero.ctaSecondary}</a>
         </div>
         <p class="tagline">“{SITE.tagline}”</p>
       </div>
@@ -63,11 +64,10 @@ const latestUpdates = allUpdates
   <section class="section vision-band">
     <div class="container vision-grid">
       <div>
-        <Eyebrow text="Our vision" />
-        <h2>Every refugee child deserves a classroom with walls.</h2>
+        <Eyebrow text={content.vision.eyebrow} />
+        <h2>{content.vision.title}</h2>
         <p>
-          Golden Mind Academy aims to nurture ethical, peaceful, and academically strong learners
-          who will become leaders and positive contributors to society.
+          {content.vision.body}
         </p>
       </div>
       <img
@@ -82,13 +82,13 @@ const latestUpdates = allUpdates
   <section class="mission-band">
     <!-- LEFT: text column -->
     <div class="mission-text-col">
-      <p class="mission-eyebrow">Our Mission</p>
+      <p class="mission-eyebrow">{content.mission.eyebrow}</p>
       <p class="mission-statement">
-        We aim to provide quality and inclusive education that promotes
-        <span class="mission-gold">academic excellence, discipline, character, leadership,</span>
-        and lifelong learning.
+        {content.mission.statementPre}
+        <span class="mission-gold">{content.mission.statementGold}</span>
+        {content.mission.statementPost}
       </p>
-      <p class="mission-tagline">Nurturing Leaders, Building the Nation.</p>
+      <p class="mission-tagline">{content.mission.tagline}</p>
     </div>
     <!-- RIGHT: image column -->
     <div class="mission-img-col">
@@ -105,16 +105,16 @@ const latestUpdates = allUpdates
   <!-- 4. THE NEED -->
   <section class="need">
     <div class="container">
-      <Eyebrow text="The need in Ayilo" onDark />
+      <Eyebrow text={content.need.eyebrow} onDark />
       <div class="stats">
-        <StatCard value="39,000+" label="refugees living in the settlement" onDark />
+        <StatCard value={content.need.stat1Value} label={content.need.stat1Label} onDark />
         <div class="stat-callout">
-          <p class="callout-pre">Did You Know</p>
-          <p class="callout-value">61%</p>
-          <p class="callout-text">of Ayilo's total population are school-age children</p>
+          <p class="callout-pre">{content.need.calloutPre}</p>
+          <p class="callout-value">{content.need.calloutValue}</p>
+          <p class="callout-text">{content.need.calloutText}</p>
         </div>
-        <StatCard value="500–800" label="students to be served each year" onDark />
-        <StatCard value="2027" label="first full academic year" onDark />
+        <StatCard value={content.need.stat2Value} label={content.need.stat2Label} onDark />
+        <StatCard value={content.need.stat3Value} label={content.need.stat3Label} onDark />
       </div>
     </div>
   </section>
@@ -122,19 +122,12 @@ const latestUpdates = allUpdates
   <!-- 5. EDUCATION GAP -->
   <section class="section gap-band">
     <div class="container gap-content">
-      <h2 class="gap-title"><span class="gap-title-pill">The Education Gap</span></h2>
+      <h2 class="gap-title"><span class="gap-title-pill">{content.gap.title}</span></h2>
       <div class="gap-cols">
         <p class="gap-body">
-          Uganda is home to nearly 2 million refugees, making it the largest refugee-hosting
-          country in Africa. More than half are children who fled conflict in neighbouring
-          countries, especially South Sudan and the Democratic Republic of the Congo.
+          {content.gap.body1}
         </p>
-        <p class="gap-body">
-          Ayilo Refugee Settlement is home to more than <strong>39,000 refugees</strong>.
-          <strong>61%</strong> of the settlement's population are school-age children. Existing
-          schools struggle with overcrowding, shortages of qualified teachers, and limited
-          learning materials, making it difficult for many children to access quality education.
-        </p>
+        <p class="gap-body" set:html={mdInline(content.gap.body2)} />
       </div>
     </div>
   </section>
@@ -143,8 +136,8 @@ const latestUpdates = allUpdates
   <section class="section fund-band">
     <div class="container fund-grid">
       <div class="fund-left">
-        <Eyebrow text="Where we are" />
-        <h2>Construction is underway.</h2>
+        <Eyebrow text={content.funding.eyebrow} />
+        <h2>{content.funding.title}</h2>
         <FundingBar />
         <a class="more" href="/progress/">See the full roadmap and budget →</a>
       </div>
@@ -173,8 +166,8 @@ const latestUpdates = allUpdates
   <!-- 7. LATEST UPDATES -->
   <section class="section updates">
     <div class="container">
-      <Eyebrow text="Updates" />
-      <h2>From the field</h2>
+      <Eyebrow text={content.updates.eyebrow} />
+      <h2>{content.updates.title}</h2>
       <div class="teasers">
         {latestUpdates.map((update) => <UpdateCard update={update} teaser />)}
       </div>

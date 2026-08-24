@@ -11,6 +11,10 @@
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE, LINKS } from '../config/site';
+import content from '../data/pages/safeguarding-children.json';
+import { mdInline } from '../lib/markdown';
+
+const concernBody = mdInline(content.concern.body.replace(/{{email}}/g, `[${SITE.email}](${LINKS.email})`));
 ---
 
 <BaseLayout
@@ -19,42 +23,21 @@ import { SITE, LINKS } from '../config/site';
 >
   <section class="section">
     <div class="container prose">
-      <h1>Safeguarding Children</h1>
-      <p>
-        Golden Mind Academy exists for children, and their safety and dignity come before
-        everything else we do. We commit to the following principles now, during construction, and
-        in the operation of the school.
-      </p>
+      <h1>{content.title}</h1>
+      <p>{content.intro}</p>
 
-      <h2>Our commitments</h2>
+      <h2>{content.commitments.heading}</h2>
       <ul>
-        <li>
-          Every child has the right to learn in an environment free from abuse, exploitation,
-          neglect, and discrimination of any kind.
-        </li>
-        <li>
-          All staff, volunteers, and contractors will be expected to follow a child-safeguarding
-          code of conduct, and concerns will be acted on promptly.
-        </li>
-        <li>
-          Photographs of children are only shared publicly with the consent of a parent or
-          guardian, and never in a way that could put a child at risk.
-        </li>
-        <li>
-          The campus is being designed with safety in mind: a secure perimeter fence, separate
-          latrines for boys and girls, and clean water on site.
-        </li>
+        {content.commitments.items.map((item) => (
+          <li>{item}</li>
+        ))}
       </ul>
 
-      <h2>Raising a concern</h2>
-      <p>
-        If you have any concern about the wellbeing of a child connected to this project, contact
-        us at <a href={LINKS.email}>{SITE.email}</a>. Every report is taken seriously.
-      </p>
+      <h2>{content.concern.heading}</h2>
+      <p set:html={concernBody} />
 
       <p class="note">
-        As the school moves toward formal registration, this commitment will be expanded into a
-        full safeguarding policy with named responsibilities and reporting procedures.
+        {content.note}
       </p>
     </div>
   </section>

@@ -1,0 +1,26 @@
+{
+  "_README": [
+    "PROGRAMS PAGE CONTENT — academics section and the planned",
+    "facilities grid. Photo lives in src/data/images.json instead."
+  ],
+  "academics": {
+    "eyebrow": "Core academics",
+    "title": "Nursery and primary education, done well.",
+    "body1": "We plan to follow the Uganda National Curriculum across nursery and primary levels, supported by continuous assessment so every learner's progress is tracked.",
+    "body2": "The goal: academic excellence built on strong foundations and a genuine love of learning — nurturing ethical, peaceful, and academically strong learners who become leaders in their communities."
+  },
+  "facilities": {
+    "eyebrow": "Planned facilities",
+    "title": "A campus designed for safe, dignified learning.",
+    "items": [
+      { "name": "9 classrooms", "detail": "Well-ventilated and safe" },
+      { "name": "Separate latrines", "detail": "For boys and girls" },
+      { "name": "Clean water", "detail": "Safe drinking water on site" },
+      { "name": "Staff room", "detail": "Space for teachers" },
+      { "name": "Admin office", "detail": "School administration" },
+      { "name": "Play areas", "detail": "Outdoor learning and sport" },
+      { "name": "Kitchen", "detail": "Meals prepared on site" },
+      { "name": "School fence", "detail": "A secure perimeter" }
+    ]
+  }
+}

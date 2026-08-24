@@ -11,50 +11,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import { SITE, LINKS } from '../config/site';
+import content from '../data/pages/get-involved.json';
 
-const ways = [
-  {
-    title: 'Financial contributions',
-    body: 'A gift of any size goes directly toward construction and materials — the fastest way to finish classrooms.',
-  },
-  {
-    title: 'Material donations',
-    body: 'Cement, timber, iron sheets, and classroom supplies are always needed. Tell us what you can provide.',
-  },
-  {
-    title: 'Partnerships & sponsorships',
-    body: 'Organizations and foundations can partner with us or sponsor a specific need.',
-  },
-  {
-    title: 'Outreach & visibility',
-    body: 'Share our story and help us reach new supporters — a meaningful contribution that costs nothing.',
-  },
-];
-
-const tiers = [
-  { amount: '$20,000', label: 'Complete 9 classrooms' },
-  { amount: '$5,000', label: 'Build the school fence' },
-  { amount: '$2,500', label: 'Water & sanitation' },
-];
-
-const faqs = [
-  {
-    q: 'Is my donation tax-deductible?',
-    a: 'Not at this time. Golden Mind Academy is a community-led project and does not yet hold formal charity registration. Donations are gifts toward the construction effort, made through GoFundMe.',
-  },
-  {
-    q: 'Can I donate materials instead of money?',
-    a: `Yes — in-kind donations of cement, timber, iron sheets, or classroom supplies can be arranged directly with the project team. Email ${SITE.email} to coordinate.`,
-  },
-  {
-    q: 'How do I know construction is actually happening?',
-    a: 'Dated photo updates are posted on our Progress page, matched against the public roadmap and budget. You can compare what we said with what we built.',
-  },
-  {
-    q: 'Who can I talk to before giving a larger amount?',
-    a: `Email ${SITE.email} — we're glad to answer questions, share more documentation, or arrange a call to walk through the budget and site photos.`,
-  },
-];
+const ways = content.ways.items;
+const tiers = content.tiers.items;
+const faqs = content.faq.items.map((faq) => ({
+  q: faq.q,
+  a: faq.a.replace(/{{email}}/g, SITE.email),
+}));
 ---
 
 <BaseLayout
@@ -64,8 +28,8 @@ const faqs = [
   <!-- FOUR WAYS -->
   <section class="section">
     <div class="container">
-      <Eyebrow text="Ways to support" />
-      <h1>Four ways to make a difference.</h1>
+      <Eyebrow text={content.ways.eyebrow} />
+      <h1>{content.ways.title}</h1>
       <ul class="ways">
         {
           ways.map((way) => (
@@ -77,7 +41,7 @@ const faqs = [
         }
       </ul>
       <a class="btn btn-gold" href={LINKS.gofundme} target="_blank" rel="noopener">
-        Donate on GoFundMe
+        {content.ways.donateButton}
       </a>
     </div>
   </section>
@@ -85,8 +49,8 @@ const faqs = [
   <!-- SPONSORSHIP TIERS -->
   <section class="section tiers-band">
     <div class="container">
-      <Eyebrow text="For organizations" />
-      <h2>Sponsor a specific need.</h2>
+      <Eyebrow text={content.tiers.eyebrow} />
+      <h2>{content.tiers.title}</h2>
       <ul class="tiers">
         {
           tiers.map((tier) => (
@@ -98,7 +62,7 @@ const faqs = [
         }
       </ul>
       <p class="partner">
-        To partner or sponsor, email <a href={LINKS.email}>{SITE.email}</a>.
+        {content.tiers.partnerText} <a href={LINKS.email}>{SITE.email}</a>.
       </p>
     </div>
   </section>
@@ -107,14 +71,11 @@ const faqs = [
   <section class="section">
     <div class="container">
       <div class="honest">
-        <Eyebrow text="How donations are handled" />
+        <Eyebrow text={content.honest.eyebrow} />
         <p>
-          Golden Mind Academy is not yet a formally registered charity — we are a refugee-led
-          community project in its construction phase. All financial donations run through our
-          public <a href={LINKS.gofundme} target="_blank" rel="noopener">GoFundMe campaign</a>,
-          and spending on materials and labor is documented in the dated updates and budget on our
-          <a href="/progress/">Progress page</a>. When formal registration is complete, it will be
-          stated here and in the footer of every page.
+          {content.honest.bodyPre}{' '}
+          <a href={LINKS.gofundme} target="_blank" rel="noopener">{content.honest.gofundmeLinkText}</a>{content.honest.bodyMid}{' '}
+          <a href="/progress/">{content.honest.progressLinkText}</a>{content.honest.bodyPost}
         </p>
       </div>
     </div>
@@ -123,8 +84,8 @@ const faqs = [
   <!-- FAQ -->
   <section class="section faq">
     <div class="container">
-      <Eyebrow text="Questions" />
-      <h2>Before you give.</h2>
+      <Eyebrow text={content.faq.eyebrow} />
+      <h2>{content.faq.title}</h2>
       {
         faqs.map((faq) => (
           <details>

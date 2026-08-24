@@ -10,18 +10,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import images from '../data/images.json';
+import content from '../data/pages/programs.json';
 
-/** Planned campus facilities, from the approved deck. */
-const facilities = [
-  { name: '9 classrooms', detail: 'Well-ventilated and safe' },
-  { name: 'Separate latrines', detail: 'For boys and girls' },
-  { name: 'Clean water', detail: 'Safe drinking water on site' },
-  { name: 'Staff room', detail: 'Space for teachers' },
-  { name: 'Admin office', detail: 'School administration' },
-  { name: 'Play areas', detail: 'Outdoor learning and sport' },
-  { name: 'Kitchen', detail: 'Meals prepared on site' },
-  { name: 'School fence', detail: 'A secure perimeter' },
-];
+const facilities = content.facilities.items;
 ---
 
 <BaseLayout
@@ -32,16 +23,13 @@ const facilities = [
   <section class="section">
     <div class="container academics">
       <div>
-        <Eyebrow text="Core academics" />
-        <h1>Nursery and primary education, done well.</h1>
+        <Eyebrow text={content.academics.eyebrow} />
+        <h1>{content.academics.title}</h1>
         <p>
-          We plan to follow the Uganda National Curriculum across nursery and primary levels,
-          supported by continuous assessment so every learner's progress is tracked.
+          {content.academics.body1}
         </p>
         <p>
-          The goal: academic excellence built on strong foundations and a genuine love of
-          learning — nurturing ethical, peaceful, and academically strong learners who become
-          leaders in their communities.
+          {content.academics.body2}
         </p>
       </div>
       <img
@@ -55,8 +43,8 @@ const facilities = [
   <!-- FACILITIES -->
   <section class="section facilities">
     <div class="container">
-      <Eyebrow text="Planned facilities" />
-      <h2>A campus designed for safe, dignified learning.</h2>
+      <Eyebrow text={content.facilities.eyebrow} />
+      <h2>{content.facilities.title}</h2>
       <ul class="grid">
         {
           facilities.map((f) => (

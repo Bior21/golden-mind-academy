@@ -11,7 +11,14 @@
  * this page must be updated to say so.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE, LINKS } from '../config/site';
+import { SITE } from '../config/site';
+import content from '../data/pages/privacy-policy.json';
+import { mdInline } from '../lib/markdown';
+
+const sections = content.sections.map((s) => ({
+  heading: s.heading,
+  body: mdInline(s.body.replace(/{{email}}/g, SITE.email)),
+}));
 ---
 
 <BaseLayout
@@ -20,37 +27,15 @@ import { SITE, LINKS } from '../config/site';
 >
   <section class="section">
     <div class="container prose">
-      <h1>Privacy Policy</h1>
-      <p>
-        Golden Mind Academy respects your privacy. This website is a simple informational site,
-        and we collect as little as possible.
-      </p>
+      <h1>{content.title}</h1>
+      <p>{content.intro}</p>
 
-      <h2>What we collect</h2>
-      <p>
-        We do not use cookies, analytics, or tracking of any kind. Browsing this site sends us no
-        information about you.
-      </p>
-
-      <h2>The contact form</h2>
-      <p>
-        If you use the contact form, your name, email address, and message are delivered to us by
-        Formspree, a form-handling service, so we can reply to you. We use this information only
-        to respond, and we never sell or share it.
-      </p>
-
-      <h2>Donations</h2>
-      <p>
-        Donations are processed entirely by GoFundMe on their platform, under
-        <a href="https://www.gofundme.com/c/terms" target="_blank" rel="noopener">
-          GoFundMe's own terms and privacy policy</a
-        >. We never see or store your payment details.
-      </p>
-
-      <h2>Questions</h2>
-      <p>
-        Email us at <a href={LINKS.email}>{SITE.email}</a>.
-      </p>
+      {sections.map((s) => (
+        <>
+          <h2>{s.heading}</h2>
+          <p set:html={s.body} />
+        </>
+      ))}
     </div>
   </section>
 </BaseLayout>

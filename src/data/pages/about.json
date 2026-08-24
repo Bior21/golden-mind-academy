@@ -1,0 +1,35 @@
+{
+  "_README": [
+    "ABOUT PAGE CONTENT — founder story, who-we-serve section, and",
+    "team bios. Photos live in src/data/images.json instead.",
+    "Body fields support **bold** markdown."
+  ],
+  "story": {
+    "eyebrow": "— Our Story",
+    "title": "From the Ayilo refugee camp in Uganda to Yale — and now building the school in Ayilo.",
+    "quote": "\"You don't choose to become a refugee. But you can choose to rise beyond it.\"",
+    "quoteAttribution": "Dut Phillip Jool Joh, Founder",
+    "body1": "Dut Phillip Jool Joh was born in Bor, South Sudan, into a family where no one had ever attended school. In 2013, when the civil war broke out, he fled to the Ayilo Refugee Settlement in Uganda, leaving his family behind in the hope that education would help him build a different future. Life in Ayilo was far from easy, but he refused to give up. From studying under trees and, at times, in temporary classrooms to spending many evenings reading under solar-powered street lights because there was no electricity at home, Dut believed that education would one day turn the page on his life.",
+    "body2": "In 2017, Dut sat for Uganda's Primary Leaving Examinations and ranked among the top 1% of pupils nationwide. His performance earned him a scholarship to Darling Wisdom Academy Secondary School in Juba, South Sudan, where he graduated at the top of his class in 2022. After high school, Dut became one of only two South Sudanese students selected for the Bridge2Rwanda Scholars Program in Kigali, Rwanda — a highly competitive college preparatory program that prepares outstanding East African students for university studies abroad.",
+    "body3": "In 2024, Dut received full scholarships to Yale University, Columbia University, and Emory University, with a combined value of more than **US$1.13 million** over four years. For a young man who had once studied under trees and borrowed books, the moment was almost unbelievable.",
+    "body4": "But reaching Yale was never the end of the journey. Growing up in Ayilo Refugee Settlement, Dut witnessed thousands of refugee children facing the same barriers he had overcome — overcrowded classrooms, limited learning materials, and too few opportunities. Those experiences inspired him to establish **Golden Mind Academy**, a refugee-led Nursery and Primary School in Ayilo Refugee Settlement. Through Golden Mind Academy, Dut hopes to give refugee children the same opportunity that transformed his own life: access to quality education, a safe place to learn, and the chance to build a brighter future. The school stands as a reminder that while conflict can force people from their homes, it does not have to define their future."
+  },
+  "serve": {
+    "eyebrow": "Who we serve",
+    "title": "Refugee children in Ayilo Camp",
+    "lede": "We focus on school-age students who currently lack access to stable, safe, and adequately resourced learning environments — from both the refugee and host communities.",
+    "stat1Value": "500–800",
+    "stat1Label": "children served each year",
+    "stat2Value": "Nursery + Primary",
+    "stat2Label": "levels offered"
+  },
+  "team": {
+    "title": "Our Team",
+    "founderName": "Dut Phillip Jool Joh",
+    "founderRole": "Founder",
+    "founderBio": "Born in Bor, South Sudan, Dut fled to Ayilo Refugee Settlement in 2013 and studied under trees and streetlights before ranking in the top 1% of Uganda's Primary Leaving Examinations. A Bridge2Rwanda Scholar, he is now a student at Yale University on a full scholarship. He founded Golden Mind Academy to give the children of Ayilo the same chance education gave him.",
+    "leadName": "Mawut Peter Nyok Mabior",
+    "leadRole": "Project Lead",
+    "leadBio": "Mawut leads the day-to-day work on the ground in Ayilo — coordinating construction, purchasing materials, and working with settlement leadership and the community. He is the project's eyes, hands, and voice on site."
+  }
+}
