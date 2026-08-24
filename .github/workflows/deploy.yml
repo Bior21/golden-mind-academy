@@ -5,7 +5,7 @@
 #
 # ONE-TIME REPO SETUP (in the GitHub web interface):
 #   Settings → Pages → Source: "GitHub Actions".
-#   Settings → Pages → Custom domain: golden-mind.org
+#   Settings → Pages → Custom domain: golden-mind-academy.org
 #   (public/CNAME keeps the domain attached across deploys.)
 
 name: Deploy to GitHub Pages

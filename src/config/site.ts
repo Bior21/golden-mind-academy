@@ -20,7 +20,7 @@ export const SITE = {
   /** Short description used for SEO meta tags and the footer. */
   description:
     'Golden Mind Academy is a refugee-led Nursery and Primary school under construction in Ayilo I Refugee Settlement, Uganda, giving refugee and host-community children the opportunity to learn and build a brighter future.',
-  email: 'admin@golden-mind.org',
+  email: 'admin@golden-mind-academy.org',
   location: {
     line1: 'Ayilo I Refugee Settlement',
     line2: 'Pakele Sub-County, Adjumani District',
@@ -32,7 +32,7 @@ export const SITE = {
 export const LINKS = {
   gofundme: 'https://gofund.me/de74f8645',
   facebook: 'https://www.facebook.com/profile.php?id=61589023891312',
-  email: `mailto:admin@golden-mind.org`,
+  email: `mailto:admin@golden-mind-academy.org`,
 } as const;
 
 /**
