@@ -39,6 +39,7 @@ import { mdInline } from '../lib/markdown';
             class="story-img"
             src={images.about.story.src}
             alt={images.about.story.alt}
+            style={`object-position: ${images.about.story.focus}`}
             loading="lazy"
           />
         </div>
@@ -79,6 +80,7 @@ import { mdInline } from '../lib/markdown';
           <img
             src={images.about.founder.src}
             alt={images.about.founder.alt}
+            style={`object-position: ${images.about.founder.focus}`}
             loading="lazy"
           />
           <h3>{content.team.founderName}</h3>
@@ -91,6 +93,7 @@ import { mdInline } from '../lib/markdown';
           <img
             src={images.about.lead.src}
             alt={images.about.lead.alt}
+            style={`object-position: ${images.about.lead.focus}`}
             loading="lazy"
           />
           <h3>{content.team.leadName}</h3>

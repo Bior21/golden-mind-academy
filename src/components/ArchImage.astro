@@ -16,18 +16,22 @@
  * - caption: Optional visible caption below the image.
  * - arch:    Set false for a plain rounded rectangle instead of the
  *            arch (used for wide landscape shots).
+ * - focus:   Which part of the photo stays visible when object-fit:
+ *            cover crops it — 'center' | 'top' | 'bottom' | 'left' |
+ *            'right'. Defaults to 'center'.
  */
 interface Props {
   src: string;
   alt: string;
   caption?: string;
   arch?: boolean;
+  focus?: string;
 }
-const { src, alt, caption, arch = true } = Astro.props;
+const { src, alt, caption, arch = true, focus = 'center' } = Astro.props;
 ---
 
 <figure>
-  <img class:list={[{ arch }]} src={src} alt={alt} loading="lazy" />
+  <img class:list={[{ arch }]} src={src} alt={alt} loading="lazy" style={`object-position: ${focus}`} />
   {caption && <figcaption>{caption}</figcaption>}
 </figure>
 

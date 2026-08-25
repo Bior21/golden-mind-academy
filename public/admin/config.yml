@@ -40,6 +40,12 @@ collections:
         fields:
           - { label: "Image", name: "src", widget: "image" }
           - { label: "Caption", name: "caption", widget: "string" }
+          - label: "Focus Point"
+            name: "focus"
+            widget: "select"
+            options: ["center", "top", "bottom", "left", "right"]
+            default: "center"
+            hint: "Which part of the photo stays visible when it's cropped to fit its frame."
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "funding"
@@ -97,6 +103,12 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
+                  - label: "Focus Point"
+                    name: "focus"
+                    widget: "select"
+                    options: ["center", "top", "bottom", "left", "right"]
+                    default: "center"
+                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
           - label: "Home Page"
             name: "home"
             widget: "object"
@@ -107,18 +119,36 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
+                  - label: "Focus Point"
+                    name: "focus"
+                    widget: "select"
+                    options: ["center", "top", "bottom", "left", "right"]
+                    default: "center"
+                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
               - label: "Vision Section Photo"
                 name: "vision"
                 widget: "object"
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
+                  - label: "Focus Point"
+                    name: "focus"
+                    widget: "select"
+                    options: ["center", "top", "bottom", "left", "right"]
+                    default: "center"
+                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
               - label: "Mission Section Photo"
                 name: "mission"
                 widget: "object"
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
+                  - label: "Focus Point"
+                    name: "focus"
+                    widget: "select"
+                    options: ["center", "top", "bottom", "left", "right"]
+                    default: "center"
+                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
           - label: "About Page"
             name: "about"
             widget: "object"
@@ -129,18 +159,36 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
+                  - label: "Focus Point"
+                    name: "focus"
+                    widget: "select"
+                    options: ["center", "top", "bottom", "left", "right"]
+                    default: "center"
+                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
               - label: "Founder Portrait"
                 name: "founder"
                 widget: "object"
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
+                  - label: "Focus Point"
+                    name: "focus"
+                    widget: "select"
+                    options: ["center", "top", "bottom", "left", "right"]
+                    default: "center"
+                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
               - label: "Project Lead Portrait"
                 name: "lead"
                 widget: "object"
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
+                  - label: "Focus Point"
+                    name: "focus"
+                    widget: "select"
+                    options: ["center", "top", "bottom", "left", "right"]
+                    default: "center"
+                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
           - label: "Programs Page"
             name: "programs"
             widget: "object"
@@ -151,6 +199,12 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
+                  - label: "Focus Point"
+                    name: "focus"
+                    widget: "select"
+                    options: ["center", "top", "bottom", "left", "right"]
+                    default: "center"
+                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
           - label: "Progress Page Gallery"
             name: "progress"
             widget: "object"
@@ -161,6 +215,12 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
+                  - label: "Focus Point"
+                    name: "focus"
+                    widget: "select"
+                    options: ["center", "top", "bottom", "left", "right"]
+                    default: "center"
+                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
                   - { label: "Caption", name: "caption", widget: "string" }
               - label: "Gallery Photo 2"
                 name: "gallery2"
@@ -168,6 +228,12 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
+                  - label: "Focus Point"
+                    name: "focus"
+                    widget: "select"
+                    options: ["center", "top", "bottom", "left", "right"]
+                    default: "center"
+                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
                   - { label: "Caption", name: "caption", widget: "string" }
               - label: "Gallery Photo 3"
                 name: "gallery3"
@@ -175,6 +241,12 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
+                  - label: "Focus Point"
+                    name: "focus"
+                    widget: "select"
+                    options: ["center", "top", "bottom", "left", "right"]
+                    default: "center"
+                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
                   - { label: "Caption", name: "caption", widget: "string" }
 
   - name: "pages"

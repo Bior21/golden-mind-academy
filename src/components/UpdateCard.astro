@@ -48,7 +48,7 @@ const { Content } = await update.render();
     !teaser && photos && photos.length > 0 && (
       <div class="photos" data-count={photos.length}>
         {photos.map((photo) => (
-          <ArchImage src={photo.src} alt={photo.caption} caption={photo.caption} arch={false} />
+          <ArchImage src={photo.src} alt={photo.caption} caption={photo.caption} arch={false} focus={photo.focus} />
         ))}
       </div>
     )

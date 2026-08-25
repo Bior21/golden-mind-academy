@@ -37,6 +37,8 @@ const updates = defineCollection({
           src: z.string().min(1, { message: 'Photo src must not be empty.' }),
           /* caption is also the alt text — enforce a real description. */
           caption: z.string().min(1, { message: 'Photo caption (used as alt text) must not be empty.' }),
+          /* Which part of the photo stays visible when object-fit: cover crops it. */
+          focus: z.enum(['center', 'top', 'bottom', 'left', 'right']).default('center'),
         })
       )
       .optional(),

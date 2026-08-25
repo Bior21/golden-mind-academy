@@ -11,63 +11,78 @@
     "",
     "FIELDS per image: src (path under public/), alt (accessibility",
     "and SEO description — always required), caption (shown on-page,",
-    "only present where the design shows visible captions)."
+    "only present where the design shows visible captions), focus",
+    "(one of 'center' | 'top' | 'bottom' | 'left' | 'right' — every",
+    "photo here is cropped to fill its frame via CSS object-fit:",
+    "cover, and 'focus' controls which edge of the photo stays",
+    "visible when that happens; change it if a crop looks wrong)."
   ],
   "header": {
     "logo": {
       "src": "/images/logo.jpg",
-      "alt": "Golden Mind Academy crest"
+      "alt": "Golden Mind Academy crest",
+      "focus": "center"
     }
   },
   "home": {
     "hero": {
       "src": "/images/hero.jpg",
-      "alt": "The Golden Mind Academy school site in Ayilo I Refugee Settlement: three roofed classroom buildings rising on the open ground at dusk."
+      "alt": "The Golden Mind Academy school site in Ayilo I Refugee Settlement: three roofed classroom buildings rising on the open ground at dusk.",
+      "focus": "center"
     },
     "vision": {
       "src": "/images/construction-latrine.jpg",
-      "alt": "Children standing beside the newly completed latrine block at the Golden Mind Academy construction site in Ayilo."
+      "alt": "Children standing beside the newly completed latrine block at the Golden Mind Academy construction site in Ayilo.",
+      "focus": "center"
     },
     "mission": {
       "src": "/images/site.jpg",
-      "alt": "A completed classroom unit with its green pyramid roof on the Golden Mind Academy site in Ayilo."
+      "alt": "A completed classroom unit with its green pyramid roof on the Golden Mind Academy site in Ayilo.",
+      "focus": "center"
     }
   },
   "about": {
     "story": {
       "src": "/images/site.jpg",
-      "alt": "The Golden Mind Academy construction site in Ayilo Refugee Settlement."
+      "alt": "The Golden Mind Academy construction site in Ayilo Refugee Settlement.",
+      "focus": "center"
     },
     "founder": {
       "src": "/images/founder.jpg",
-      "alt": "Portrait of Dut Phillip Jool Joh."
+      "alt": "Portrait of Dut Phillip Jool Joh.",
+      "focus": "top"
     },
     "lead": {
       "src": "/images/lead.jpg",
-      "alt": "Portrait of Mawut Peter Nyok Mabior."
+      "alt": "Portrait of Mawut Peter Nyok Mabior.",
+      "focus": "top"
     }
   },
   "programs": {
     "academics": {
       "src": "/images/site.jpg",
-      "alt": "A completed classroom unit with its green pyramid roof on the Golden Mind Academy site in Ayilo."
+      "alt": "A completed classroom unit with its green pyramid roof on the Golden Mind Academy site in Ayilo.",
+      "focus": "center"
     }
   },
   "progress": {
     "gallery1": {
       "src": "/images/construction-frame.jpg",
       "alt": "The timber roof truss structure rising across the full length of the classroom block before roofing sheets were installed.",
-      "caption": "Timber frame rising across the classroom block."
+      "caption": "Timber frame rising across the classroom block.",
+      "focus": "center"
     },
     "gallery2": {
       "src": "/images/frame.jpg",
       "alt": "The long classroom block with green roofing sheets installed, seen from the school grounds.",
-      "caption": "Green roofing installed over the main building."
+      "caption": "Green roofing installed over the main building.",
+      "focus": "center"
     },
     "gallery3": {
       "src": "/images/hero.jpg",
       "alt": "Wide view of the Golden Mind Academy site in Ayilo I Refugee Settlement: three roofed classroom buildings at dusk.",
-      "caption": "The full site at Ayilo, Northern Uganda."
+      "caption": "The full site at Ayilo, Northern Uganda.",
+      "focus": "center"
     }
   }
 }
