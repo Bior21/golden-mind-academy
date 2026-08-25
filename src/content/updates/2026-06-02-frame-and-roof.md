@@ -6,6 +6,12 @@ photos:
   - src: /images/whatsapp-image-2026-06-30-at-14.00.19.jpeg
     caption: The timber frame and roof structure, June 2026.
     focus: center
+  - focus: center
+    src: /images/our-story.jpg
+    caption: One block
+  - focus: center
+    src: /images/vision-section.jpeg
+    caption: Different angle
 ---
 
 The timber frame is up and roofing is in place across the main
