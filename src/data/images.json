@@ -11,11 +11,7 @@
     "",
     "FIELDS per image: src (path under public/), alt (accessibility",
     "and SEO description — always required), caption (shown on-page,",
-    "only present where the design shows visible captions), focus",
-    "(one of 'center' | 'top' | 'bottom' | 'left' | 'right' — every",
-    "photo here is cropped to fill its frame via CSS object-fit:",
-    "cover, and 'focus' controls which edge of the photo stays",
-    "visible when that happens; change it if a crop looks wrong)."
+    "only present where the design shows visible captions)."
   ],
   "header": {
     "logo": {
@@ -43,19 +39,19 @@
   },
   "about": {
     "story": {
-      "src": "/images/img_6753.jpg",
+      "src": "/images/new-story.jpg",
       "alt": "The Golden Mind Academy construction site in Ayilo Refugee Settlement.",
-      "focus": "center"
+      "focus": "top"
     },
     "founder": {
       "src": "/images/founder.jpg",
       "alt": "Portrait of Dut Phillip Jool Joh.",
-      "focus": "top"
+      "focus": "center"
     },
     "lead": {
       "src": "/images/lead.jpg",
       "alt": "Portrait of Mawut Peter Nyok Mabior.",
-      "focus": "top"
+      "focus": "center"
     }
   },
   "programs": {
