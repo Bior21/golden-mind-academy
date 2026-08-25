@@ -44,6 +44,7 @@ collections:
             name: "focus"
             widget: "select"
             options: ["center", "top", "bottom", "left", "right"]
+            required: false
             default: "center"
             hint: "Which part of the photo stays visible when it's cropped to fit its frame."
       - { label: "Body", name: "body", widget: "markdown" }
@@ -107,6 +108,7 @@ collections:
                     name: "focus"
                     widget: "select"
                     options: ["center", "top", "bottom", "left", "right"]
+                    required: false
                     default: "center"
                     hint: "Which part of the photo stays visible when it's cropped to fit its frame."
           - label: "Home Page"
@@ -123,6 +125,7 @@ collections:
                     name: "focus"
                     widget: "select"
                     options: ["center", "top", "bottom", "left", "right"]
+                    required: false
                     default: "center"
                     hint: "Which part of the photo stays visible when it's cropped to fit its frame."
               - label: "Vision Section Photo"
@@ -135,6 +138,7 @@ collections:
                     name: "focus"
                     widget: "select"
                     options: ["center", "top", "bottom", "left", "right"]
+                    required: false
                     default: "center"
                     hint: "Which part of the photo stays visible when it's cropped to fit its frame."
               - label: "Mission Section Photo"
@@ -147,6 +151,7 @@ collections:
                     name: "focus"
                     widget: "select"
                     options: ["center", "top", "bottom", "left", "right"]
+                    required: false
                     default: "center"
                     hint: "Which part of the photo stays visible when it's cropped to fit its frame."
           - label: "About Page"
@@ -163,6 +168,7 @@ collections:
                     name: "focus"
                     widget: "select"
                     options: ["center", "top", "bottom", "left", "right"]
+                    required: false
                     default: "center"
                     hint: "Which part of the photo stays visible when it's cropped to fit its frame."
               - label: "Founder Portrait"
@@ -175,6 +181,7 @@ collections:
                     name: "focus"
                     widget: "select"
                     options: ["center", "top", "bottom", "left", "right"]
+                    required: false
                     default: "center"
                     hint: "Which part of the photo stays visible when it's cropped to fit its frame."
               - label: "Project Lead Portrait"
@@ -187,6 +194,7 @@ collections:
                     name: "focus"
                     widget: "select"
                     options: ["center", "top", "bottom", "left", "right"]
+                    required: false
                     default: "center"
                     hint: "Which part of the photo stays visible when it's cropped to fit its frame."
           - label: "Programs Page"
@@ -203,6 +211,7 @@ collections:
                     name: "focus"
                     widget: "select"
                     options: ["center", "top", "bottom", "left", "right"]
+                    required: false
                     default: "center"
                     hint: "Which part of the photo stays visible when it's cropped to fit its frame."
           - label: "Progress Page Gallery"
@@ -219,6 +228,7 @@ collections:
                     name: "focus"
                     widget: "select"
                     options: ["center", "top", "bottom", "left", "right"]
+                    required: false
                     default: "center"
                     hint: "Which part of the photo stays visible when it's cropped to fit its frame."
                   - { label: "Caption", name: "caption", widget: "string" }
@@ -232,6 +242,7 @@ collections:
                     name: "focus"
                     widget: "select"
                     options: ["center", "top", "bottom", "left", "right"]
+                    required: false
                     default: "center"
                     hint: "Which part of the photo stays visible when it's cropped to fit its frame."
                   - { label: "Caption", name: "caption", widget: "string" }
@@ -245,6 +256,7 @@ collections:
                     name: "focus"
                     widget: "select"
                     options: ["center", "top", "bottom", "left", "right"]
+                    required: false
                     default: "center"
                     hint: "Which part of the photo stays visible when it's cropped to fit its frame."
                   - { label: "Caption", name: "caption", widget: "string" }
