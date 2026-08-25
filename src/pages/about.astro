@@ -148,14 +148,16 @@ import { mdInline } from '../lib/markdown';
     min-height: 260px;
   }
 
-  /* Image fills the wrapper via absolute positioning */
+  /* Image fills the wrapper via absolute positioning. object-fit: contain
+     (not cover) so the whole photo is always visible, uncropped — any
+     leftover space is filled by the background color instead. */
   .story-img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
+    object-fit: contain;
+    background: var(--cream-deep);
     border-radius: 8px;
     display: block;
   }
