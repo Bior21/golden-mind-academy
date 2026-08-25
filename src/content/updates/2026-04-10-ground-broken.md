@@ -3,8 +3,9 @@ title: Ground broken in Ayilo
 date: 2026-04-10
 category: Construction
 photos:
-  - src: /images/placeholder-site.svg
+  - src: /images/whatsapp-image-2026-06-30-at-14.00.27.jpeg
     caption: The cleared site in Ayilo I, April 2026.
+    focus: center
 ---
 
 Construction of Golden Mind Academy has officially begun. The site in
