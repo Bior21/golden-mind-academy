@@ -3,8 +3,9 @@ title: Frame and roofing in place on the main building
 date: 2026-06-02
 category: Construction
 photos:
-  - src: /images/placeholder-frame.svg
+  - src: /images/whatsapp-image-2026-06-30-at-14.00.19.jpeg
     caption: The timber frame and roof structure, June 2026.
+    focus: center
 ---
 
 The timber frame is up and roofing is in place across the main
