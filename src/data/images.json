@@ -41,7 +41,7 @@
     "story": {
       "src": "/images/new-story.jpg",
       "alt": "The Golden Mind Academy construction site in Ayilo Refugee Settlement.",
-      "focus": "center"
+      "focus": "bottom"
     },
     "founder": {
       "src": "/images/founder.jpg",
