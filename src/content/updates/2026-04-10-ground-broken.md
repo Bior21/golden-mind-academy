@@ -6,6 +6,12 @@ photos:
   - src: /images/whatsapp-image-2026-06-30-at-14.00.27.jpeg
     caption: The cleared site in Ayilo I, April 2026.
     focus: center
+  - focus: center
+    src: /images/692960937_122101134087300796_265609187948491315_n.jpg
+    caption: April 2026.
+  - focus: center
+    src: /images/687998807_122101133739300796_3243874765925166319_n.jpg
+    caption: April 2026
 ---
 
 Construction of Golden Mind Academy has officially begun. The site in
