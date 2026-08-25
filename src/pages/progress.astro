@@ -16,6 +16,7 @@ import ArchImage from '../components/ArchImage.astro';
 import Roadmap from '../components/Roadmap.astro';
 import FundingTracker from '../components/FundingTracker.astro';
 import UpdateCard from '../components/UpdateCard.astro';
+import PhotoLightbox from '../components/PhotoLightbox.astro';
 import { LINKS } from '../config/site';
 import { getCollection } from 'astro:content';
 import images from '../data/images.json';
@@ -114,6 +115,8 @@ const updates = (await getCollection('updates')).sort(
       }
     </div>
   </section>
+
+  <PhotoLightbox />
 </BaseLayout>
 
 <style>

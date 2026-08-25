@@ -1,0 +1,165 @@
+---
+/**
+ * PhotoLightbox.astro
+ * --------------------
+ * One shared lightbox for every photo mosaic on the page (rendered
+ * by UpdateCard.astro). Clicking any photo tile opens it here with
+ * prev/next navigation and its caption.
+ *
+ * How it finds the photos: each `.photos` container (in UpdateCard)
+ * carries the FULL photo list — including any beyond the 4 shown in
+ * the mosaic — as a `data-photos` JSON attribute. Clicking a tile
+ * reads that attribute plus the tile's `data-index`, so the lightbox
+ * always has every photo for that update, not just the visible ones.
+ *
+ * Used by: progress.astro (the only page whose UpdateCards show
+ * photos — homepage teasers never do). Render it once per page.
+ */
+---
+
+<dialog id="photo-lightbox">
+  <button type="button" class="lb-close" aria-label="Close">&times;</button>
+  <button type="button" class="lb-prev" aria-label="Previous photo">&#8249;</button>
+  <img class="lb-image" src="" alt="" />
+  <button type="button" class="lb-next" aria-label="Next photo">&#8250;</button>
+  <p class="lb-caption"></p>
+</dialog>
+
+<style>
+  /* Fixed box size (not sized to the image) so the modal doesn't
+     jump around as you navigate between differently-shaped photos. */
+  dialog#photo-lightbox {
+    border: none;
+    border-radius: 10px;
+    background: var(--navy-deep);
+    padding: 0;
+    width: min(92vw, 900px);
+    height: 80vh;
+  }
+  dialog#photo-lightbox::backdrop {
+    background: rgba(16, 26, 48, 0.85);
+  }
+  dialog#photo-lightbox[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .lb-image {
+    display: block;
+    flex: 1;
+    min-height: 0;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    margin: auto;
+    object-fit: contain;
+  }
+  .lb-caption {
+    color: var(--cream);
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 0.9rem 1.2rem;
+    margin: 0;
+  }
+  .lb-close,
+  .lb-prev,
+  .lb-next {
+    position: absolute;
+    background: rgba(16, 26, 48, 0.6);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lb-close {
+    top: 10px;
+    right: 10px;
+  }
+  .lb-prev {
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+  .lb-next {
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+</style>
+
+<script>
+  function setup() {
+    const dialog = document.getElementById('photo-lightbox') as HTMLDialogElement | null;
+    if (!dialog) return;
+    const img = dialog.querySelector('.lb-image') as HTMLImageElement;
+    const caption = dialog.querySelector('.lb-caption') as HTMLElement;
+    const closeBtn = dialog.querySelector('.lb-close') as HTMLButtonElement;
+    const prevBtn = dialog.querySelector('.lb-prev') as HTMLButtonElement;
+    const nextBtn = dialog.querySelector('.lb-next') as HTMLButtonElement;
+
+    let photos: { src: string; caption?: string }[] = [];
+    let index = 0;
+
+    function render() {
+      const photo = photos[index];
+      img.src = photo.src;
+      img.alt = photo.caption || '';
+      caption.textContent = photo.caption || '';
+      const multi = photos.length > 1;
+      prevBtn.style.visibility = multi ? 'visible' : 'hidden';
+      nextBtn.style.visibility = multi ? 'visible' : 'hidden';
+    }
+
+    function open(list: { src: string; caption?: string }[], startIndex: number) {
+      photos = list;
+      index = startIndex;
+      render();
+      dialog!.showModal();
+    }
+
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const tile = target.closest('.photo-tile');
+      if (!tile) return;
+      const container = tile.closest('.photos');
+      if (!container) return;
+      const data = container.getAttribute('data-photos');
+      if (!data) return;
+      const list = JSON.parse(data);
+      const idx = Number(tile.getAttribute('data-index')) || 0;
+      open(list, idx);
+    });
+
+    closeBtn.addEventListener('click', () => dialog!.close());
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + photos.length) % photos.length;
+      render();
+    });
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % photos.length;
+      render();
+    });
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        index = (index - 1 + photos.length) % photos.length;
+        render();
+      }
+      if (e.key === 'ArrowRight') {
+        index = (index + 1) % photos.length;
+        render();
+      }
+    });
+  }
+
+  setup();
+</script>
