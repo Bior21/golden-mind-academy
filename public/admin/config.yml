@@ -211,9 +211,9 @@ collections:
                   - *focus_point
                   - { label: "Caption", name: "caption", widget: "string" }
 
-  - name: "pages"
-    label: "Pages"
-    description: "The text content for every page on the site — headlines, section copy, and button labels."
+  - name: "home_page"
+    label: "Home Page"
+    description: "The text content for the home page — headlines, section copy, and button labels."
     files:
       - name: "home"
         label: "Home Page"
@@ -278,6 +278,10 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
 
+  - name: "about_page"
+    label: "About Page"
+    description: "The text content for the About page — founder story, who we serve, and team bios."
+    files:
       - name: "about"
         label: "About Page"
         file: "src/data/pages/about.json"
@@ -317,6 +321,10 @@ collections:
               - { label: "Lead Role", name: "leadRole", widget: "string" }
               - { label: "Lead Bio", name: "leadBio", widget: "text" }
 
+  - name: "programs_page"
+    label: "Programs Page"
+    description: "The text content for the Programs page — academics and facilities."
+    files:
       - name: "programs"
         label: "Programs Page"
         file: "src/data/pages/programs.json"
@@ -342,6 +350,10 @@ collections:
                   - { label: "Name", name: "name", widget: "string" }
                   - { label: "Detail", name: "detail", widget: "string" }
 
+  - name: "progress_page"
+    label: "Progress Page"
+    description: "The text content for the Progress page — status, roadmap, funding tracker, and updates sections."
+    files:
       - name: "progress"
         label: "Progress Page"
         file: "src/data/pages/progress.json"
@@ -375,6 +387,10 @@ collections:
               - { label: "Lede Link Text", name: "ledeLink", widget: "string" }
               - { label: "Empty State Text", name: "empty", widget: "string" }
 
+  - name: "get_involved_page"
+    label: "Get Involved Page"
+    description: "The text content for the Get Involved page — ways to support, sponsorship tiers, and FAQ."
+    files:
       - name: "get_involved"
         label: "Get Involved Page"
         file: "src/data/pages/get-involved.json"
@@ -428,6 +444,10 @@ collections:
                   - { label: "Question", name: "q", widget: "string" }
                   - { label: "Answer", name: "a", widget: "text", hint: "Use {{email}} to insert the contact email automatically." }
 
+  - name: "contact_page"
+    label: "Contact Page"
+    description: "The text content for the Contact page — form labels and details panel."
+    files:
       - name: "contact"
         label: "Contact Page"
         file: "src/data/pages/contact.json"
@@ -453,6 +473,10 @@ collections:
               - { label: "Location Label", name: "locationLabel", widget: "string" }
               - { label: "Follow & Support Label", name: "followLabel", widget: "string" }
 
+  - name: "privacy_policy_page"
+    label: "Privacy Policy Page"
+    description: "The text content for the Privacy Policy page."
+    files:
       - name: "privacy_policy"
         label: "Privacy Policy Page"
         file: "src/data/pages/privacy-policy.json"
@@ -466,6 +490,10 @@ collections:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Body", name: "body", widget: "text", hint: "Supports **bold**, [link](url), and {{email}} markdown." }
 
+  - name: "safeguarding_children_page"
+    label: "Safeguarding Children Page"
+    description: "The text content for the Safeguarding Children page."
+    files:
       - name: "safeguarding_children"
         label: "Safeguarding Children Page"
         file: "src/data/pages/safeguarding-children.json"
