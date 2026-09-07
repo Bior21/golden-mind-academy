@@ -32,6 +32,7 @@ export const SITE = {
 export const LINKS = {
   gofundme: 'https://gofund.me/de74f8645',
   facebook: 'https://www.facebook.com/profile.php?id=61589023891312',
+  linkedin: 'https://www.linkedin.com/company/golden-mind-academy-ayilo/',
   email: `mailto:admin@golden-mind-academy.org`,
 } as const;
 
