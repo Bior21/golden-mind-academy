@@ -1,9 +1,25 @@
 {
   "_README": [
-    "ABOUT PAGE CONTENT — founder story, who-we-serve section, and",
-    "team bios. Photos live in src/data/images.json instead.",
-    "Body fields support **bold** markdown."
+    "ABOUT PAGE CONTENT — founder story, who-we-serve section, team",
+    "bios, and photos. Body fields support **bold** markdown."
   ],
+  "photos": {
+    "story": {
+      "src": "/images/new-story.jpg",
+      "alt": "The Golden Mind Academy construction site in Ayilo Refugee Settlement.",
+      "focus": "top"
+    },
+    "founder": {
+      "src": "/images/founder.jpg",
+      "alt": "Portrait of Dut Phillip Jool Joh.",
+      "focus": "center"
+    },
+    "lead": {
+      "src": "/images/lead.jpg",
+      "alt": "Portrait of Mawut Peter Nyok Mabior.",
+      "focus": "center"
+    }
+  },
   "story": {
     "eyebrow": "— Our Story",
     "title": "From the Ayilo refugee camp in Uganda to Yale — and now building the school in Ayilo.",

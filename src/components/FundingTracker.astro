@@ -8,9 +8,11 @@
  *
  * Used by: progress.astro only. The homepage uses FundingBar alone.
  *
- * Data source: src/data/funding.json — edit numbers THERE.
+ * Data source: src/data/pages/progress.json (tracker section) —
+ * edit numbers THERE.
  */
-import funding from '../data/funding.json';
+import content from '../data/pages/progress.json';
+const funding = content.tracker;
 import FundingBar from './FundingBar.astro';
 
 const formatDollars = (amount: number) => '$' + amount.toLocaleString('en-US');

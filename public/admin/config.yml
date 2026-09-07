@@ -62,52 +62,12 @@ collections:
             hint: "Which part of the photo stays visible when it's cropped to fit its frame."
       - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "funding"
-    label: "Funding"
-    description: "The dollar amounts and budget line items shown in the funding tracker on the Progress page."
-    files:
-      - name: "funding"
-        label: "Funding Numbers"
-        file: "src/data/funding.json"
-        fields:
-          - { label: "As Of Date", name: "asOf", widget: "date", format: "YYYY-MM-DD" }
-          - { label: "Amount Raised (USD)", name: "raised", widget: "number", value_type: "int" }
-          - { label: "Current Phase Goal (USD)", name: "phaseGoal", widget: "number", value_type: "int" }
-          - { label: "Current Phase Label", name: "phaseLabel", widget: "string" }
-          - { label: "Total Goal (USD)", name: "totalGoal", widget: "number", value_type: "int" }
-          - label: "Budget Line Items"
-            name: "items"
-            widget: "list"
-            fields:
-              - { label: "Label", name: "label", widget: "string" }
-              - { label: "Cost (USD)", name: "cost", widget: "number", value_type: "int" }
-
-  - name: "roadmap"
-    label: "Construction Roadmap"
-    description: "The construction timeline milestones shown on the Progress page, in order from earliest to latest."
-    files:
-      - name: "roadmap"
-        label: "Roadmap Milestones"
-        file: "src/data/roadmap.json"
-        fields:
-          - label: "Milestones"
-            name: "milestones"
-            widget: "list"
-            fields:
-              - { label: "Label", name: "label", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Body", name: "body", widget: "string" }
-              - label: "Status"
-                name: "status"
-                widget: "select"
-                options: ["done", "current", "upcoming"]
-
   - name: "site_images"
     label: "Site Images"
-    description: "The photos used across every page of the site, plus the alt text and focus point for each."
+    description: "Images shared across every page (currently just the header logo). Page-specific photos live on each page's own collection."
     files:
       - name: "images"
-        label: "Photos Across the Site"
+        label: "Global Images"
         file: "src/data/images.json"
         fields:
           - label: "Header Logo"
@@ -121,8 +81,17 @@ collections:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
                   - *focus_point
-          - label: "Home Page"
-            name: "home"
+
+  - name: "home_page"
+    label: "Home Page"
+    description: "Everything on the Home page — photos, headlines, section copy, and button labels."
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "src/data/pages/home.json"
+        fields:
+          - label: "Photos"
+            name: "photos"
             widget: "object"
             fields:
               - label: "Hero Photo"
@@ -146,79 +115,6 @@ collections:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
                   - *focus_point
-          - label: "About Page"
-            name: "about"
-            widget: "object"
-            fields:
-              - label: "Story Photo"
-                name: "story"
-                widget: "object"
-                fields:
-                  - { label: "Image", name: "src", widget: "image" }
-                  - { label: "Alt Text", name: "alt", widget: "string" }
-                  - *focus_point
-              - label: "Founder Portrait"
-                name: "founder"
-                widget: "object"
-                fields:
-                  - { label: "Image", name: "src", widget: "image" }
-                  - { label: "Alt Text", name: "alt", widget: "string" }
-                  - *focus_point
-              - label: "Project Lead Portrait"
-                name: "lead"
-                widget: "object"
-                fields:
-                  - { label: "Image", name: "src", widget: "image" }
-                  - { label: "Alt Text", name: "alt", widget: "string" }
-                  - *focus_point
-          - label: "Programs Page"
-            name: "programs"
-            widget: "object"
-            fields:
-              - label: "Academics Photo"
-                name: "academics"
-                widget: "object"
-                fields:
-                  - { label: "Image", name: "src", widget: "image" }
-                  - { label: "Alt Text", name: "alt", widget: "string" }
-                  - *focus_point
-          - label: "Progress Page Gallery"
-            name: "progress"
-            widget: "object"
-            fields:
-              - label: "Gallery Photo 1"
-                name: "gallery1"
-                widget: "object"
-                fields:
-                  - { label: "Image", name: "src", widget: "image" }
-                  - { label: "Alt Text", name: "alt", widget: "string" }
-                  - *focus_point
-                  - { label: "Caption", name: "caption", widget: "string" }
-              - label: "Gallery Photo 2"
-                name: "gallery2"
-                widget: "object"
-                fields:
-                  - { label: "Image", name: "src", widget: "image" }
-                  - { label: "Alt Text", name: "alt", widget: "string" }
-                  - *focus_point
-                  - { label: "Caption", name: "caption", widget: "string" }
-              - label: "Gallery Photo 3"
-                name: "gallery3"
-                widget: "object"
-                fields:
-                  - { label: "Image", name: "src", widget: "image" }
-                  - { label: "Alt Text", name: "alt", widget: "string" }
-                  - *focus_point
-                  - { label: "Caption", name: "caption", widget: "string" }
-
-  - name: "home_page"
-    label: "Home Page"
-    description: "The text content for the home page — headlines, section copy, and button labels."
-    files:
-      - name: "home"
-        label: "Home Page"
-        file: "src/data/pages/home.json"
-        fields:
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -280,12 +176,37 @@ collections:
 
   - name: "about_page"
     label: "About Page"
-    description: "The text content for the About page — founder story, who we serve, and team bios."
+    description: "Everything on the About page — photos, founder story, who we serve, and team bios."
     files:
       - name: "about"
         label: "About Page"
         file: "src/data/pages/about.json"
         fields:
+          - label: "Photos"
+            name: "photos"
+            widget: "object"
+            fields:
+              - label: "Story Photo"
+                name: "story"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+                  - *focus_point
+              - label: "Founder Portrait"
+                name: "founder"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+                  - *focus_point
+              - label: "Project Lead Portrait"
+                name: "lead"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+                  - *focus_point
           - label: "Founder Story"
             name: "story"
             widget: "object"
@@ -323,12 +244,23 @@ collections:
 
   - name: "programs_page"
     label: "Programs Page"
-    description: "The text content for the Programs page — academics and facilities."
+    description: "Everything on the Programs page — photo, academics, and facilities."
     files:
       - name: "programs"
         label: "Programs Page"
         file: "src/data/pages/programs.json"
         fields:
+          - label: "Photos"
+            name: "photos"
+            widget: "object"
+            fields:
+              - label: "Academics Photo"
+                name: "academics"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+                  - *focus_point
           - label: "Academics Section"
             name: "academics"
             widget: "object"
@@ -352,7 +284,7 @@ collections:
 
   - name: "progress_page"
     label: "Progress Page"
-    description: "The text content for the Progress page — status, roadmap, funding tracker, and updates sections."
+    description: "Everything on the Progress page — status, gallery photos, roadmap milestones, funding numbers, and updates section labels."
     files:
       - name: "progress"
         label: "Progress Page"
@@ -365,18 +297,71 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Lede", name: "lede", widget: "text" }
+          - label: "Photos"
+            name: "photos"
+            widget: "object"
+            fields:
+              - label: "Gallery Photo 1"
+                name: "gallery1"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+                  - *focus_point
+                  - { label: "Caption", name: "caption", widget: "string" }
+              - label: "Gallery Photo 2"
+                name: "gallery2"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+                  - *focus_point
+                  - { label: "Caption", name: "caption", widget: "string" }
+              - label: "Gallery Photo 3"
+                name: "gallery3"
+                widget: "object"
+                fields:
+                  - { label: "Image", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+                  - *focus_point
+                  - { label: "Caption", name: "caption", widget: "string" }
           - label: "Roadmap Section"
             name: "roadmap"
             widget: "object"
             fields:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
+              - label: "Milestones"
+                name: "milestones"
+                widget: "list"
+                summary: "{{title}}"
+                fields:
+                  - { label: "Label", name: "label", widget: "string", hint: "A date for finished phases, or NOW / NEXT / THEN for future ones." }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "string" }
+                  - label: "Status"
+                    name: "status"
+                    widget: "select"
+                    options: ["done", "current", "upcoming"]
+                    hint: "Only one milestone should be 'current' at a time."
           - label: "Funding Tracker Section"
             name: "tracker"
             widget: "object"
             fields:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Donate Button Text", name: "donateButton", widget: "string" }
+              - { label: "As Of Date", name: "asOf", widget: "date", format: "YYYY-MM-DD" }
+              - { label: "Amount Raised (USD)", name: "raised", widget: "number", value_type: "int" }
+              - { label: "Current Phase Goal (USD)", name: "phaseGoal", widget: "number", value_type: "int" }
+              - { label: "Current Phase Label", name: "phaseLabel", widget: "string" }
+              - { label: "Total Goal (USD)", name: "totalGoal", widget: "number", value_type: "int" }
+              - label: "Budget Line Items"
+                name: "items"
+                widget: "list"
+                summary: "{{label}}"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Cost (USD)", name: "cost", widget: "number", value_type: "int" }
           - label: "Updates Section"
             name: "updates"
             widget: "object"

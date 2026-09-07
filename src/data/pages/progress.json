@@ -1,23 +1,100 @@
 {
   "_README": [
-    "PROGRESS PAGE CONTENT — status header and section labels.",
-    "Gallery photos/captions live in src/data/images.json. Roadmap",
-    "milestones live in src/data/roadmap.json. Funding numbers live",
-    "in src/data/funding.json. Update entries live in",
-    "src/content/updates/."
+    "PROGRESS PAGE CONTENT — everything shown on the Progress page:",
+    "status header, gallery photos, construction roadmap, funding",
+    "tracker, and update section labels. This is also the single",
+    "source of truth for the funding numbers and roadmap milestones",
+    "that the Home page summary widgets pull from — update them here",
+    "and both pages update. Update entries themselves live in",
+    "src/content/updates/.",
+    "",
+    "FUNDING FIELDS (under tracker): asOf (date figures were last",
+    "checked), raised (dollars raised so far), phaseGoal (goal for the",
+    "current priority phase), phaseLabel (one line describing it),",
+    "totalGoal (full amount needed to open), items (budget line items).",
+    "",
+    "ROADMAP FIELDS (under roadmap.milestones): label (small text above",
+    "the title — a date for finished phases, or NOW/NEXT/THEN for",
+    "future ones), title, body, status (done | current | upcoming —",
+    "only one milestone should be 'current' at a time)."
   ],
   "status": {
     "eyebrow": "Early structural phase — in progress",
     "title": "Construction began in April 2026.",
     "lede": "The timber frame is up and roofing is in place across the main building. Continued progress depends on securing additional materials, labor, and funding. Every gift takes us a measurable step closer to walled, finished classrooms."
   },
+  "photos": {
+    "gallery1": {
+      "src": "/images/construction-frame.jpg",
+      "alt": "The timber roof truss structure rising across the full length of the classroom block before roofing sheets were installed.",
+      "caption": "Timber frame rising across the classroom block.",
+      "focus": "center"
+    },
+    "gallery2": {
+      "src": "/images/frame.jpg",
+      "alt": "The long classroom block with green roofing sheets installed, seen from the school grounds.",
+      "caption": "Green roofing installed over the main building.",
+      "focus": "center"
+    },
+    "gallery3": {
+      "src": "/images/hero.jpg",
+      "alt": "Wide view of the Golden Mind Academy site in Ayilo I Refugee Settlement: three roofed classroom buildings at dusk.",
+      "caption": "The full site at Ayilo, Northern Uganda.",
+      "focus": "center"
+    }
+  },
   "roadmap": {
     "eyebrow": "The road to 2027",
-    "title": "Our Construction Roadmap."
+    "title": "Our Construction Roadmap.",
+    "milestones": [
+      {
+        "label": "April 2026",
+        "title": "Ground broken",
+        "body": "Site cleared, structural phase begins.",
+        "status": "done"
+      },
+      {
+        "label": "Now",
+        "title": "Frame & roof up",
+        "body": "Framing and roofing in place on the main building.",
+        "status": "current"
+      },
+      {
+        "label": "Next",
+        "title": "Classrooms completed",
+        "body": "Walls, floors, finishing for 9 classrooms.",
+        "status": "upcoming"
+      },
+      {
+        "label": "Then",
+        "title": "Furnish & secure",
+        "body": "Desks, water & sanitation, and a fence.",
+        "status": "upcoming"
+      },
+      {
+        "label": "2027",
+        "title": "Doors open",
+        "body": "First academic year for 500–800 students.",
+        "status": "upcoming"
+      }
+    ]
   },
   "tracker": {
     "eyebrow": "Funding tracker",
-    "donateButton": "Donate on GoFundMe"
+    "donateButton": "Donate on GoFundMe",
+    "asOf": "2026-07-05",
+    "raised": 5474,
+    "phaseGoal": 20000,
+    "phaseLabel": "Highest priority: completing 9 classrooms",
+    "totalGoal": 35000,
+    "items": [
+      { "label": "9 classrooms", "cost": 20000 },
+      { "label": "School fence", "cost": 5000 },
+      { "label": "Desks & furniture", "cost": 3000 },
+      { "label": "Water & sanitation", "cost": 2500 },
+      { "label": "Operational support", "cost": 2500 },
+      { "label": "Learning materials", "cost": 2000 }
+    ]
   },
   "updates": {
     "eyebrow": "Updates",

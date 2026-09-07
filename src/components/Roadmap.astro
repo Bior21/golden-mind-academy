@@ -8,15 +8,16 @@
  *
  * Used by: progress.astro.
  *
- * Data source: src/data/roadmap.json — edit milestones THERE.
+ * Data source: src/data/pages/progress.json (roadmap.milestones) —
+ * edit milestones THERE.
  * Each milestone's `status` drives its look automatically:
  *   done     → solid navy dot
  *   current  → gold dot with a glow, gold label
  *   upcoming → hollow muted dot, muted label
  */
-import roadmap from '../data/roadmap.json';
+import content from '../data/pages/progress.json';
 
-const milestones = roadmap.milestones;
+const milestones = content.roadmap.milestones;
 ---
 
 <!-- --cols is read by the CSS grid rule so column count tracks the data -->
@@ -45,7 +46,7 @@ const milestones = roadmap.milestones;
     list-style: none;
     display: grid;
     /* --cols is set inline from the milestones array length, so adding or
-       removing a milestone in roadmap.json automatically widens/narrows the grid. */
+       removing a milestone in progress.json automatically widens/narrows the grid. */
     grid-template-columns: repeat(var(--cols, 5), 1fr);
     gap: 1.4rem;
   }

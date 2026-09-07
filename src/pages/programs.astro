@@ -9,7 +9,6 @@
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
-import images from '../data/images.json';
 import content from '../data/pages/programs.json';
 
 const facilities = content.facilities.items;
@@ -33,9 +32,9 @@ const facilities = content.facilities.items;
         </p>
       </div>
       <img
-        src={images.programs.academics.src}
-        alt={images.programs.academics.alt}
-        style={`object-position: ${images.programs.academics.focus}`}
+        src={content.photos.academics.src}
+        alt={content.photos.academics.alt}
+        style={`object-position: ${content.photos.academics.focus}`}
         loading="lazy"
       />
     </div>

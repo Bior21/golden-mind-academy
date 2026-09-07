@@ -8,7 +8,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import StatCard from '../components/StatCard.astro';
-import images from '../data/images.json';
 import content from '../data/pages/about.json';
 import { mdInline } from '../lib/markdown';
 ---
@@ -37,9 +36,9 @@ import { mdInline } from '../lib/markdown';
         <div class="story-img-col">
           <img
             class="story-img"
-            src={images.about.story.src}
-            alt={images.about.story.alt}
-            style={`object-position: ${images.about.story.focus}`}
+            src={content.photos.story.src}
+            alt={content.photos.story.alt}
+            style={`object-position: ${content.photos.story.focus}`}
             loading="lazy"
           />
         </div>
@@ -78,9 +77,9 @@ import { mdInline } from '../lib/markdown';
       <div class="team">
         <article class="member">
           <img
-            src={images.about.founder.src}
-            alt={images.about.founder.alt}
-            style={`object-position: ${images.about.founder.focus}`}
+            src={content.photos.founder.src}
+            alt={content.photos.founder.alt}
+            style={`object-position: ${content.photos.founder.focus}`}
             loading="lazy"
           />
           <h3>{content.team.founderName}</h3>
@@ -91,9 +90,9 @@ import { mdInline } from '../lib/markdown';
         </article>
         <article class="member">
           <img
-            src={images.about.lead.src}
-            alt={images.about.lead.alt}
-            style={`object-position: ${images.about.lead.focus}`}
+            src={content.photos.lead.src}
+            alt={content.photos.lead.alt}
+            style={`object-position: ${content.photos.lead.focus}`}
             loading="lazy"
           />
           <h3>{content.team.leadName}</h3>

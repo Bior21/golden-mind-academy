@@ -2,9 +2,10 @@
 /**
  * progress.astro — PROGRESS PAGE
  * --------------------------------
- * Sections: current status + photo gallery → construction roadmap
- * (from roadmap.json) → funding tracker (from funding.json) →
- * Updates feed (from src/content/updates/).
+ * Sections: current status + photo gallery → construction roadmap →
+ * funding tracker → Updates feed (from src/content/updates/). All
+ * content, photos, roadmap, and funding numbers live in
+ * src/data/pages/progress.json.
  *
  * The Updates feed is a vertical timeline with gold dot markers,
  * deliberately echoing the Roadmap: the roadmap is the plan, the
@@ -19,7 +20,6 @@ import UpdateCard from '../components/UpdateCard.astro';
 import PhotoLightbox from '../components/PhotoLightbox.astro';
 import { LINKS } from '../config/site';
 import { getCollection } from 'astro:content';
-import images from '../data/images.json';
 import content from '../data/pages/progress.json';
 
 /* All updates, newest first. */
@@ -42,24 +42,24 @@ const updates = (await getCollection('updates')).sort(
       </p>
       <div class="gallery">
         <ArchImage
-          src={images.progress.gallery1.src}
-          alt={images.progress.gallery1.alt}
-          caption={images.progress.gallery1.caption}
-          focus={images.progress.gallery1.focus}
+          src={content.photos.gallery1.src}
+          alt={content.photos.gallery1.alt}
+          caption={content.photos.gallery1.caption}
+          focus={content.photos.gallery1.focus}
           arch={false}
         />
         <ArchImage
-          src={images.progress.gallery2.src}
-          alt={images.progress.gallery2.alt}
-          caption={images.progress.gallery2.caption}
-          focus={images.progress.gallery2.focus}
+          src={content.photos.gallery2.src}
+          alt={content.photos.gallery2.alt}
+          caption={content.photos.gallery2.caption}
+          focus={content.photos.gallery2.focus}
           arch={false}
         />
         <ArchImage
-          src={images.progress.gallery3.src}
-          alt={images.progress.gallery3.alt}
-          caption={images.progress.gallery3.caption}
-          focus={images.progress.gallery3.focus}
+          src={content.photos.gallery3.src}
+          alt={content.photos.gallery3.alt}
+          caption={content.photos.gallery3.caption}
+          focus={content.photos.gallery3.focus}
           arch={false}
         />
       </div>

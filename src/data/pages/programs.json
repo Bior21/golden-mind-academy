@@ -1,8 +1,15 @@
 {
   "_README": [
-    "PROGRAMS PAGE CONTENT — academics section and the planned",
-    "facilities grid. Photo lives in src/data/images.json instead."
+    "PROGRAMS PAGE CONTENT — academics section, planned facilities",
+    "grid, and photo."
   ],
+  "photos": {
+    "academics": {
+      "src": "/images/site.jpg",
+      "alt": "A completed classroom unit with its green pyramid roof on the Golden Mind Academy site in Ayilo.",
+      "focus": "center"
+    }
+  },
   "academics": {
     "eyebrow": "Core academics",
     "title": "Nursery and primary education, done well.",

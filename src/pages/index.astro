@@ -11,8 +11,10 @@
  *   6. Funding summary — FundingBar + link to Progress.
  *   7. Latest updates — two most recent, as teasers.
  *
- * Data sources: src/data/funding.json (bar), src/content/updates/
- * (teasers). Contact/URLs from src/config/site.ts.
+ * Data sources: src/data/pages/home.json (text + photos),
+ * src/data/pages/progress.json (funding numbers for the budget
+ * table), src/content/updates/ (teasers). Contact/URLs from
+ * src/config/site.ts.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
@@ -21,8 +23,7 @@ import FundingBar from '../components/FundingBar.astro';
 import UpdateCard from '../components/UpdateCard.astro';
 import { SITE, LINKS } from '../config/site';
 import { getCollection } from 'astro:content';
-import funding from '../data/funding.json';
-import images from '../data/images.json';
+import progressContent from '../data/pages/progress.json';
 import content from '../data/pages/home.json';
 import { mdInline } from '../lib/markdown';
 const fmt = (n: number) => '$' + n.toLocaleString('en-US');
@@ -39,9 +40,9 @@ const latestUpdates = allUpdates
   <section class="hero">
     <img
       class="hero-photo"
-      src={images.home.hero.src}
-      alt={images.home.hero.alt}
-      style={`object-position: ${images.home.hero.focus}`}
+      src={content.photos.hero.src}
+      alt={content.photos.hero.alt}
+      style={`object-position: ${content.photos.hero.focus}`}
     />
     <div class="hero-copy">
       <div class="container">
@@ -72,9 +73,9 @@ const latestUpdates = allUpdates
         </p>
       </div>
       <img
-        src={images.home.vision.src}
-        alt={images.home.vision.alt}
-        style={`object-position: ${images.home.vision.focus}`}
+        src={content.photos.vision.src}
+        alt={content.photos.vision.alt}
+        style={`object-position: ${content.photos.vision.focus}`}
         loading="lazy"
       />
     </div>
@@ -95,9 +96,9 @@ const latestUpdates = allUpdates
     <!-- RIGHT: image column -->
     <div class="mission-img-col">
       <img
-        src={images.home.mission.src}
-        alt={images.home.mission.alt}
-        style={`object-position: ${images.home.mission.focus}`}
+        src={content.photos.mission.src}
+        alt={content.photos.mission.alt}
+        style={`object-position: ${content.photos.mission.focus}`}
         loading="lazy"
       />
     </div>
@@ -148,7 +149,7 @@ const latestUpdates = allUpdates
         <p class="budget-label">Budget breakdown</p>
         <table class="budget-table">
           <tbody>
-            {funding.items.map((item) => (
+            {progressContent.tracker.items.map((item) => (
               <tr>
                 <td class="item-name">{item.label}</td>
                 <td class="item-cost">{fmt(item.cost)}</td>
@@ -158,7 +159,7 @@ const latestUpdates = allUpdates
           <tfoot>
             <tr class="total-row">
               <td>Total</td>
-              <td>{fmt(funding.totalGoal)}</td>
+              <td>{fmt(progressContent.tracker.totalGoal)}</td>
             </tr>
           </tfoot>
         </table>

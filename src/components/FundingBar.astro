@@ -9,9 +9,11 @@
  * Used by: index.astro (funding summary) and FundingTracker.astro
  * (top of the full tracker on the Progress page).
  *
- * Data source: src/data/funding.json — edit numbers THERE.
+ * Data source: src/data/pages/progress.json (tracker section) —
+ * edit numbers THERE.
  */
-import funding from '../data/funding.json';
+import content from '../data/pages/progress.json';
+const funding = content.tracker;
 
 /** Formats 5474 as "$5,474" for display. */
 const formatDollars = (amount: number) => '$' + amount.toLocaleString('en-US');
