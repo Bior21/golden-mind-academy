@@ -17,15 +17,27 @@ backend:
   base_url: https://golden-mind-oauth-proxy.vercel.app
   auth_endpoint: api/auth
 
+logo:
+  src: "/images/logo.jpg"
+  show_in_header: true
+
+display_url: "https://golden-mind-academy.org"
+
 media_folder: "public/images"
 public_folder: "/images"
 
 collections:
   - name: "updates"
     label: "Progress Updates"
+    description: "Construction, fundraising, and community news for the Progress page. Each entry is a dated post with optional photos."
     folder: "src/content/updates"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}} — {{title}}"
+    sortable_fields: ["date", "title"]
+    view_groups:
+      - label: "Category"
+        field: category
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "date", default: "{{now}}", format: "YYYY-MM-DD" }
@@ -40,7 +52,8 @@ collections:
         fields:
           - { label: "Image", name: "src", widget: "image" }
           - { label: "Caption", name: "caption", widget: "string" }
-          - label: "Focus Point"
+          - &focus_point
+            label: "Focus Point"
             name: "focus"
             widget: "select"
             options: ["center", "top", "bottom", "left", "right"]
@@ -51,6 +64,7 @@ collections:
 
   - name: "funding"
     label: "Funding"
+    description: "The dollar amounts and budget line items shown in the funding tracker on the Progress page."
     files:
       - name: "funding"
         label: "Funding Numbers"
@@ -70,6 +84,7 @@ collections:
 
   - name: "roadmap"
     label: "Construction Roadmap"
+    description: "The construction timeline milestones shown on the Progress page, in order from earliest to latest."
     files:
       - name: "roadmap"
         label: "Roadmap Milestones"
@@ -89,6 +104,7 @@ collections:
 
   - name: "site_images"
     label: "Site Images"
+    description: "The photos used across every page of the site, plus the alt text and focus point for each."
     files:
       - name: "images"
         label: "Photos Across the Site"
@@ -104,13 +120,7 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
-                  - label: "Focus Point"
-                    name: "focus"
-                    widget: "select"
-                    options: ["center", "top", "bottom", "left", "right"]
-                    required: false
-                    default: "center"
-                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
+                  - *focus_point
           - label: "Home Page"
             name: "home"
             widget: "object"
@@ -121,39 +131,21 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
-                  - label: "Focus Point"
-                    name: "focus"
-                    widget: "select"
-                    options: ["center", "top", "bottom", "left", "right"]
-                    required: false
-                    default: "center"
-                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
+                  - *focus_point
               - label: "Vision Section Photo"
                 name: "vision"
                 widget: "object"
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
-                  - label: "Focus Point"
-                    name: "focus"
-                    widget: "select"
-                    options: ["center", "top", "bottom", "left", "right"]
-                    required: false
-                    default: "center"
-                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
+                  - *focus_point
               - label: "Mission Section Photo"
                 name: "mission"
                 widget: "object"
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
-                  - label: "Focus Point"
-                    name: "focus"
-                    widget: "select"
-                    options: ["center", "top", "bottom", "left", "right"]
-                    required: false
-                    default: "center"
-                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
+                  - *focus_point
           - label: "About Page"
             name: "about"
             widget: "object"
@@ -164,39 +156,21 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
-                  - label: "Focus Point"
-                    name: "focus"
-                    widget: "select"
-                    options: ["center", "top", "bottom", "left", "right"]
-                    required: false
-                    default: "center"
-                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
+                  - *focus_point
               - label: "Founder Portrait"
                 name: "founder"
                 widget: "object"
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
-                  - label: "Focus Point"
-                    name: "focus"
-                    widget: "select"
-                    options: ["center", "top", "bottom", "left", "right"]
-                    required: false
-                    default: "center"
-                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
+                  - *focus_point
               - label: "Project Lead Portrait"
                 name: "lead"
                 widget: "object"
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
-                  - label: "Focus Point"
-                    name: "focus"
-                    widget: "select"
-                    options: ["center", "top", "bottom", "left", "right"]
-                    required: false
-                    default: "center"
-                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
+                  - *focus_point
           - label: "Programs Page"
             name: "programs"
             widget: "object"
@@ -207,13 +181,7 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
-                  - label: "Focus Point"
-                    name: "focus"
-                    widget: "select"
-                    options: ["center", "top", "bottom", "left", "right"]
-                    required: false
-                    default: "center"
-                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
+                  - *focus_point
           - label: "Progress Page Gallery"
             name: "progress"
             widget: "object"
@@ -224,13 +192,7 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
-                  - label: "Focus Point"
-                    name: "focus"
-                    widget: "select"
-                    options: ["center", "top", "bottom", "left", "right"]
-                    required: false
-                    default: "center"
-                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
+                  - *focus_point
                   - { label: "Caption", name: "caption", widget: "string" }
               - label: "Gallery Photo 2"
                 name: "gallery2"
@@ -238,13 +200,7 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
-                  - label: "Focus Point"
-                    name: "focus"
-                    widget: "select"
-                    options: ["center", "top", "bottom", "left", "right"]
-                    required: false
-                    default: "center"
-                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
+                  - *focus_point
                   - { label: "Caption", name: "caption", widget: "string" }
               - label: "Gallery Photo 3"
                 name: "gallery3"
@@ -252,17 +208,12 @@ collections:
                 fields:
                   - { label: "Image", name: "src", widget: "image" }
                   - { label: "Alt Text", name: "alt", widget: "string" }
-                  - label: "Focus Point"
-                    name: "focus"
-                    widget: "select"
-                    options: ["center", "top", "bottom", "left", "right"]
-                    required: false
-                    default: "center"
-                    hint: "Which part of the photo stays visible when it's cropped to fit its frame."
+                  - *focus_point
                   - { label: "Caption", name: "caption", widget: "string" }
 
   - name: "pages"
     label: "Pages"
+    description: "The text content for every page on the site — headlines, section copy, and button labels."
     files:
       - name: "home"
         label: "Home Page"
