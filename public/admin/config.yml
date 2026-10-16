@@ -40,7 +40,7 @@ collections:
         field: category
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "date", default: "{{now}}", format: "YYYY-MM-DD" }
+      - { label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD", hint: "Confirm this is the correct date before publishing." }
       - label: "Category"
         name: "category"
         widget: "select"
